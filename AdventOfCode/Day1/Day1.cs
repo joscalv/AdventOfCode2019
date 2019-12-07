@@ -2,7 +2,7 @@
 using System.IO;
 using AdventOfCode.Model;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day1
 {
     public static class Day1
     {

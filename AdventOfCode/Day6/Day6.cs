@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using AdventOfCode.Day6;
 
-namespace Day6
+namespace AdventOfCode.Day6
 {
     public static class Day6
     {
-        static void Execute()
+        public static void Execute()
         {
             Console.WriteLine($"The number of orbits is {Day6.Part1()}");
             Console.WriteLine($"Steps to get SANTA {Day6.Part2()}");

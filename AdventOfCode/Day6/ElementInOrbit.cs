@@ -1,4 +1,4 @@
-﻿namespace Day6
+﻿namespace AdventOfCode.Day6
 {
     public class ElementInOrbit
     {

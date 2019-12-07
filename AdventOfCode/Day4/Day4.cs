@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day4
 {
     public static class Day4
     {
         public const int Min = 124075;
         public const int Max = 580769;
 
-        static void Execute()
+        public static void Execute()
         {
-            Console.WriteLine($"Solution 1: {Day4.Part1()}");
-            Console.WriteLine($"Solution 2: {Day4.Part2()}");
+            Console.WriteLine($"4.1 Secure Container: {Day4.Part1()}");
+            Console.WriteLine($"Secure Container. Two Adjacent: {Day4.Part2()}");
         }
 
         public static int Part1()

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day3
 {
     public static class Day3
     {
-
-        static void Execute()
+        public static void Execute()
         {
             Console.WriteLine($"La distancia minima es Solution 1.1 {Day3.Part1_Version1()}");
             Console.WriteLine($"La distancia minima es Solution 1.2 {Day3.Part1_Version2()}");

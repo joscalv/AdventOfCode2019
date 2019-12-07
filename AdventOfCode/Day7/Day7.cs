@@ -10,13 +10,13 @@ namespace AdventOfCode.Day7
 {
     public class Day7
     {
-        static async Task Execute(string[] args)
+        public static async Task Execute()
         {
-            //var result = Part1();
-            //Console.WriteLine($"Result part 1: {result}");
+            var result = Part1();
+            Console.WriteLine($"7.1. Amplification Circuit: {result}");
 
             var result2 = await Part2();
-            Console.WriteLine($"Result part 2: {result2}");
+            Console.WriteLine($"7.2. Amplification Circuit With Feedback Loop : {result2}");
 
         }
 

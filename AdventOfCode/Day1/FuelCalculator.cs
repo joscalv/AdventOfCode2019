@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode.Model
+﻿namespace AdventOfCode.Day1
 {
     public static class FuelCalculator
     {

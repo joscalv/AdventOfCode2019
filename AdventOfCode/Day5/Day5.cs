@@ -9,15 +9,14 @@ namespace AdventOfCode.Day5
 
     public static class Day5
     {
-
-        static void Execute()
+        public static void Execute()
         {
             //Input 1
             var result1 = Day5.Part1();
-            Console.WriteLine($"Solution 1 {result1}");
+            Console.WriteLine($"5.1 Sunny with a Chance of Asteroids: {result1}");
             //Input 5
             var result2 = Day5.Part2();
-            Console.WriteLine($"Solution 2 {result1}");
+            Console.WriteLine($"5.2 Sunny with a Chance of Asteroids. Thermal Radiators: {result1}");
         }
 
         public static int Part1()

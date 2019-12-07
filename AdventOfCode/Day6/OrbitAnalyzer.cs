@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Day6;
 
 namespace AdventOfCode.Day6
 {
