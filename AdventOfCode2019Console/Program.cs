@@ -51,16 +51,16 @@ namespace AdventOfCode2019Console
 
             Console.WriteLine($"{Environment.NewLine}Day 7");
             Day7.Init();
-            ExecuteSolution("7.1", Day7.Part1);
-            ExecuteSolution("7.2", () => Day7.Part2().Result);
+            ExecuteSolution("7.1 Amplification Circuit", Day7.Part1);
+            ExecuteSolution("7.2 Amplification Circuit with Feedback loop", () => Day7.Part2().Result);
 
 
             Console.WriteLine($"{Environment.NewLine}Day 8");
             Day8.Init();
-            ExecuteSolution("8.1 Complex", Day8.Part1ComplexImage);
-            ExecuteSolution("8.1 Simple", Day8.Part1SimpleImage);
-            ExecuteSolution("8.2 Complex", Day8.Part2ComplexImage);
-            ExecuteSolution("8.2 Simple", Day8.Part2SimpleImage);
+            ExecuteSolution("8.1 Count Zeros Complex", Day8.Part1ComplexImage);
+            ExecuteSolution("8.1 Count Zeros Simple", Day8.Part1SimpleImage);
+            ExecuteSolution("8.2 Decode Image Complex", Day8.Part2ComplexImage);
+            ExecuteSolution("8.2 Decode Image Simple", Day8.Part2SimpleImage);
         }
 
         private static void ExecuteSolution(string title, Func<int> solution)
