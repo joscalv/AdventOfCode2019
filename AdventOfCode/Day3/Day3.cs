@@ -8,6 +8,17 @@ namespace AdventOfCode.Day3
 {
     public static class Day3
     {
+        private static readonly List<string> MovesLine1;
+        private static readonly List<string> MovesLine2;
+        static Day3()
+        {
+            ReadInput(out MovesLine1, out MovesLine2);
+        }
+
+        public static void Init()
+        {
+        }
+
         public static void ReadInput(out List<string> movesLine1, out List<string> movesLine2)
         {
             var input = System.IO.File.ReadAllText(@"Inputs\inputDay3.txt");
@@ -17,10 +28,10 @@ namespace AdventOfCode.Day3
 
         public static int Part1_Version1()
         {
-            ReadInput(out var commands1, out var commands2);
+
             var minDistanceSolution1 = GetDistanceToClosestIntersectionUsingSegments(
-                commands1,
-                commands2,
+                MovesLine1,
+                MovesLine2,
                 out int minDistance11,
                 out Point nearestPoint11,
                 out List<Point> joinList11);
@@ -29,10 +40,9 @@ namespace AdventOfCode.Day3
 
         public static int Part1_Version2()
         {
-            ReadInput(out var movesLine1, out var movesLine2);
             var minDistanceSolution2 = GetDistanceToClosestIntersectionUsingAllPoints(
-                movesLine1,
-                movesLine2,
+                MovesLine1,
+                MovesLine2,
                 out int minDistance,
                 out Point nearestJoin,
                 out List<Point> joinList,
@@ -156,6 +166,7 @@ namespace AdventOfCode.Day3
             }
             return result;
         }
+
     }
 
     public static class Utils

@@ -7,18 +7,23 @@ namespace AdventOfCode.Day6
 {
     public static class Day6
     {
+
+        private static readonly (string center, string satellite)[] Orbits = ReadInput();
+
+        public static void Init()
+        {
+        }
+
         public static int Part1()
         {
-            var orbits = ReadInput();
-            var orbitAnalyzer = new OrbitAnalyzer(orbits);
+            var orbitAnalyzer = new OrbitAnalyzer(Orbits);
             var value = orbitAnalyzer.GetNumberOfOrbits();
             return value;
         }
 
         public static int Part2()
         {
-            var orbits = ReadInput();
-            var orbitAnalyzer = new OrbitAnalyzer(orbits);
+            var orbitAnalyzer = new OrbitAnalyzer(Orbits);
             var value = orbitAnalyzer.GetOrbitalTransfers("YOU", "SAN");
             return value;
         }
@@ -43,6 +48,5 @@ namespace AdventOfCode.Day6
             var tmp = s.Split(')');
             return (tmp[0].Trim(), tmp[1].Trim());
         }
-
     }
 }

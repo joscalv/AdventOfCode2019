@@ -12,16 +12,17 @@ namespace AdventOfCode.Day7
 {
     public class Day7
     {
+        private static readonly int[] Program = ReadInput();
+
+        public static void Init() { }
         public static int Part1()
         {
-            var program = ReadInput();
-            return Day7Part1.AmplificationCircuit(program);
+            return Day7Part1.AmplificationCircuit(Program);
         }
 
         public static async Task<int> Part2()
         {
-            var program = ReadInput();
-            return await Day7Part2.AmplificationCircuitWithFeedbackLoop(program);
+            return await Day7Part2.AmplificationCircuitWithFeedbackLoop(Program);
         }
 
         private static int[] ReadInput()

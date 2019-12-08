@@ -8,9 +8,13 @@ namespace AdventOfCode.Day8
     public static class Day8
     {
 
-        public static readonly int[] Input = ReadInput().StringToIntArray();
-        public static int Width= 25;
-        public static int Height= 6;
+        private static readonly int[] Input = ReadInput().StringToIntArray();
+        public static int Width = 25;
+        public static int Height = 6;
+
+        public static void Init()
+        {
+        }
 
         public static int Part1ComplexImage()
         {
@@ -47,7 +51,7 @@ namespace AdventOfCode.Day8
             {
                 for (int x = 0; x < image.Width; x++)
                 {
-                    if (x == 0 && y!=0)
+                    if (x == 0 && y != 0)
                     {
                         resultStirng.Append(Environment.NewLine);
                     }
@@ -61,16 +65,16 @@ namespace AdventOfCode.Day8
 
         public static int Part1SimpleImage()
         {
-            var image= new Image(Input, Width, Height);
+            var image = new Image(Input, Width, Height);
             return image.GetNumberOf1Mult2WhenOfLayerWhenZeroIsMinimal();
         }
 
         public static string Part2SimpleImage()
         {
             var image = new Image(Input, Width, Height);
-            
-            var decodedImage=  image.DecodeImage();
-            
+
+            var decodedImage = image.DecodeImage();
+
             return decodedImage;
         }
 

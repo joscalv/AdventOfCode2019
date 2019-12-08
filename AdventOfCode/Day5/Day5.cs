@@ -10,6 +10,7 @@ namespace AdventOfCode.Day5
 
     public static class Day5
     {
+        private static readonly int[] Program = ReadInput();
         public static int Part1()
         {
             return Execute(1);
@@ -22,11 +23,11 @@ namespace AdventOfCode.Day5
 
         public static int Execute(int inputValue)
         {
-            var program = ReadInput();
+           
 
             var input = new InputFixedValue(inputValue);
             var output = new OutputFixed();
-            var computer = new IntCodeComputer(program, input, output);
+            var computer = new IntCodeComputer(Program, input, output);
 
             computer.Execute();
 
@@ -40,6 +41,10 @@ namespace AdventOfCode.Day5
                 .Select(int.Parse)
                 .ToArray();
             return program;
+        }
+
+        public static void Init()
+        {
         }
     }
 }
