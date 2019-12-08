@@ -9,16 +9,16 @@
 
         public void Execute(int[] program, ref int pc)
         {
-            int originalPC = pc;
+            int originalPc = pc;
 
-            ExecuteInstruction(program, ref originalPC);
-            if (pc == originalPC)
+            ExecuteInstruction(program, ref originalPc);
+            if (pc == originalPc)
             {
                 pc = pc + Length;
             }
             else
             {
-                pc = originalPC;
+                pc = originalPc;
             }
         }
 

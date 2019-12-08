@@ -1,82 +1,85 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.ExceptionServices;
 using System.Text;
 
 namespace AdventOfCode.Day8
 {
     public static class Day8
     {
-        public static int Part1()
+
+        public static readonly int[] Input = ReadInput().StringToIntArray();
+        public static int Width= 25;
+        public static int Height= 6;
+
+        public static int Part1ComplexImage()
         {
-            var input = ReadInput();
-            var imageBytes = ImageDecoder.StringToIntArray(input);
-            int width = 25;
-            int height = 6;
-            var image = new Image(width, height, imageBytes);
+            var image = new ComplexImage(Width, Height, Input);
 
             int zeros = Int32.MaxValue;
             int unoes = 0;
             int two = 0;
             var tmp = 0;
-            for (int i = 0; i < image.Layers.Length; i++)
+            for (int i = 0; i < image.Data.Length; i++)
             {
-                tmp = NumberOf(image.Layers[i], 0);
+                tmp = Utils.NumberOf(image.Data[i], 0);
                 if (tmp < zeros)
                 {
                     zeros = tmp;
-                    unoes = NumberOf(image.Layers[i], 1);
-                    two = NumberOf(image.Layers[i], 2);
+                    unoes = Utils.NumberOf(image.Data[i], 1);
+                    two = Utils.NumberOf(image.Data[i], 2);
                 }
             }
 
             return unoes * two;
         }
 
-        public static void Part2()
+        public static string Part2ComplexImage()
         {
             var input = ReadInput();
-            var imageBytes = ImageDecoder.StringToIntArray(input);
-            int width = 25;
-            int height = 6;
-            var image = new Image(width, height, imageBytes);
+            var imageBytes = StringToIntArray(input);
+            var image = new ComplexImage(Width, Height, imageBytes);
 
             var result = image.DecodeImage();
 
+            var resultStirng = new StringBuilder();
             for (int y = 0; y < image.Height; y++)
             {
                 for (int x = 0; x < image.Width; x++)
                 {
-                    if (x == 0)
+                    if (x == 0 && y!=0)
                     {
-                        Console.Write(Environment.NewLine);
+                        resultStirng.Append(Environment.NewLine);
                     }
-                    Console.Write((char)(result[y,x]));
-                    
+
+                    resultStirng.Append((char)result[y, x]);
                 }
             }
+
+            return resultStirng.ToString();
         }
 
-        private static int NumberOf(int[][] dataLayer, int value)
+        public static int Part1SimpleImage()
         {
-            return dataLayer.SelectMany(v => v).Count(v => v == value);
+            var image= new Image(Input, Width, Height);
+            return image.GetNumberOf1Mult2WhenOfLayerWhenZeroIsMinimal();
         }
 
+        public static string Part2SimpleImage()
+        {
+            var image = new Image(Input, Width, Height);
+            
+            var decodedImage=  image.DecodeImage();
+            
+            return decodedImage;
+        }
 
-        private static string ReadInput()
+        public static string ReadInput()
         {
             return File.ReadAllText(@"Inputs\inputDay8.txt");
         }
 
-
-    }
-
-    public static class ImageDecoder
-    {
-        public static int[] StringToIntArray(string s)
+        public static int[] StringToIntArray(this string s)
         {
             int length = s.Length;
             int[] result = new int[length];
@@ -84,24 +87,66 @@ namespace AdventOfCode.Day8
             {
                 result[i] = s[i] - 48;
             }
+
             return result;
         }
+    }
 
+    public static class Utils
+    {
+        public static int NumberOf(int[][] dataLayer, int value)
+        {
+            return dataLayer.SelectMany(v => v).Count(v => v == value);
+        }
 
-        public static int[,] DecodeImage(this Image img)
+        public static int GetNumberOf1Mult2WhenOfLayerWhenZeroIsMinimal(this Image image)
+        {
+            var result = new int[] { Int32.MaxValue, 0, 0 };
+            var tmp = new int[3] { 0, 0, 0 };
+            var previousLayer = 0;
+
+            for (int i = 0; i < image.Data.Length; i++)
+            {
+                int layer = i / image.BytesPerLayer;
+                if (layer != previousLayer)
+                {
+                    if (tmp[0] < result[0])
+                    {
+                        result = tmp;
+                    }
+                    tmp = new int[] { 0, 0, 0, };
+                    previousLayer = layer;
+                }
+
+                if (image.Data[i] < 3)
+                {
+                    tmp[image.Data[i]] = tmp[image.Data[i]] + 1;
+                }
+            }
+
+            if (tmp[0] < result[0])
+            {
+                result = tmp;
+            }
+
+            return result[1] * result[2];
+
+        }
+
+        public static int[,] DecodeImage(this ComplexImage img)
         {
             var result = new int[img.Height, img.Width];
-            var colors = new int[] {32, 35, 0};
+            var colors = new int[] { 32, 35, 0 };
 
-            for (int layer = 0; layer < img.Layers.Length; layer++)
+            for (int layer = 0; layer < img.Data.Length; layer++)
             {
                 for (int x = 0; x < img.Width; x++)
                 {
                     for (int y = 0; y < img.Height; y++)
                     {
-                        if (result[y,x]== 0)
+                        if (result[y, x] == 0)
                         {
-                            result[y, x] = colors[img.Layers[layer][y][x]];
+                            result[y, x] = colors[img.Data[layer][y][x]];
                         }
                     }
                 }
@@ -111,17 +156,14 @@ namespace AdventOfCode.Day8
         }
     }
 
-    public class Image
-    {
-        public int Width { get; }
-        public int Height { get; }
-        private readonly int[] _data;
 
-        public Image(int width, int height, int[] data)
+    [ObsoleteAttribute]
+    public class ComplexImage
+    {
+        public ComplexImage(int width, int height, int[] data)
         {
             Width = width;
             Height = height;
-            _data = data;
             var layerSize = Width * Height;
             var numLayers = data.Length / layerSize;
             var layerData = new int[numLayers][][];
@@ -141,13 +183,77 @@ namespace AdventOfCode.Day8
                 {
                     layerData[layer][row] = new int[width];
                 }
+
                 layerData[layer][row][elementInRow] = data[i];
             }
 
-            Layers = layerData;
+            Data = layerData;
         }
 
-        public int[][][] Layers { get; }
+        public int Width { get; }
+
+        public int Height { get; }
+
+        public int[][][] Data { get; }
+    }
+
+    public class Image
+    {
+        public Image(int[] data, int width, int height)
+        {
+            Data = data;
+            Width = width;
+            Height = height;
+            BytesPerLayer = Width * Height;
+            NumLayers = Data.Length / (BytesPerLayer);
+        }
+
+        public int[] Data { get; }
+        public int Width { get; }
+        public int Height { get; }
+        public int BytesPerLayer { get; }
+        public int NumLayers { get; }
+
+        public string DecodeImage()
+        {
+            var result = new int[Height, Width];
+            var colors = new[] { ' ', '#', 0 };
+
+            for (int layer = 0; layer < NumLayers; layer++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    for (int y = 0; y < Height; y++)
+                    {
+                        if (result[y, x] == colors[2])
+                        {
+                            int index = GetIndex(layer, x, y);
+                            result[y, x] = colors[Data[index]];
+                        }
+                    }
+                }
+            }
+
+            var resultString = new StringBuilder();
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    if (y != 0 && x == 0)
+                    {
+                        resultString.Append(Environment.NewLine);
+                    }
+
+                    resultString.Append((char)result[y, x]);
+                }
+            }
+
+            return resultString.ToString();
+        }
+
+        private int GetIndex(int layer, int x, int y)
+        {
+            return layer * BytesPerLayer + y * Width + x;
+        }
     }
 }
-

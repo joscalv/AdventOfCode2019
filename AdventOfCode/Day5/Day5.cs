@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using AdventOfCode.IntCode;
@@ -9,16 +10,6 @@ namespace AdventOfCode.Day5
 
     public static class Day5
     {
-        public static void Execute()
-        {
-            //Input 1
-            var result1 = Day5.Part1();
-            Console.WriteLine($"5.1 Sunny with a Chance of Asteroids: {result1}");
-            //Input 5
-            var result2 = Day5.Part2();
-            Console.WriteLine($"5.2 Sunny with a Chance of Asteroids. Thermal Radiators: {result1}");
-        }
-
         public static int Part1()
         {
             return Execute(1);
@@ -33,15 +24,15 @@ namespace AdventOfCode.Day5
         {
             var program = ReadInput();
 
-            var input= new InputFixedValue(inputValue);
+            var input = new InputFixedValue(inputValue);
             var output = new OutputFixed();
             var computer = new IntCodeComputer(program, input, output);
 
             computer.Execute();
-            
+
             return output.GetOutPut();
         }
-       
+
         private static int[] ReadInput()
         {
             var program = File.ReadAllText(@"Inputs\inputDay5.txt")

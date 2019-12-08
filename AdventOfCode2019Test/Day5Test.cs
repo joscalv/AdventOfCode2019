@@ -1,5 +1,4 @@
-﻿using AdventOfCode;
-using AdventOfCode.Day5;
+﻿using AdventOfCode.Day5;
 using Xunit;
 
 namespace AdventOfCode2019Test
@@ -10,7 +9,7 @@ namespace AdventOfCode2019Test
         public void Part1Test()
         {
             var expected = 15508323;
-            var result= Day5.Part1();
+            var result = Day5.Part1();
             Assert.Equal(expected, result);
         }
 

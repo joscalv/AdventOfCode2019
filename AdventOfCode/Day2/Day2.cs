@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using AdventOfCode.IntCode;
@@ -8,19 +9,17 @@ namespace AdventOfCode.Day2
 
     public static class Day2
     {
-        public static void Execute()
+
+        private static readonly int[] Program;
+
+        static Day2()
         {
-            //Input 1
-            var result1 = Day2.Part1();
-            Console.WriteLine($"Solution Day 2.1 {result1}");
-            //Input 5
-            var result2 = Day2.Part2();
-            Console.WriteLine($"Solution Day 2.2 {result1}");
+            Program = ReadInput();
         }
 
         public static int Part1()
         {
-            var program = ReadInput();
+            var program = (int[])Program.Clone();
             program[1] = 12;
             program[2] = 2;
 
@@ -32,7 +31,7 @@ namespace AdventOfCode.Day2
 
         public static int Part2()
         {
-            var program = ReadInput();
+            var program = (int[])Program.Clone();
 
             for (int noun = 0; noun < 100; noun++)
             {

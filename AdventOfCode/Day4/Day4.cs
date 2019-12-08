@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace AdventOfCode.Day4
 {
@@ -7,13 +8,7 @@ namespace AdventOfCode.Day4
         public const int Min = 124075;
         public const int Max = 580769;
 
-        public static void Execute()
-        {
-            Console.WriteLine($"4.1 Secure Container: {Day4.Part1()}");
-            Console.WriteLine($"Secure Container. Two Adjacent: {Day4.Part2()}");
-        }
-
-        public static int Part1()
+       public static int Part1()
         {
             bool Checker(int password) =>
                 Day4.IsSixDigit(password)

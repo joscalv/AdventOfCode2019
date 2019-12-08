@@ -18,7 +18,6 @@ namespace AdventOfCode.IntCode.IO
             {
                 _queue = new Queue<int>();
             }
-
         }
 
         public void Write(int output)
@@ -28,7 +27,6 @@ namespace AdventOfCode.IntCode.IO
                 _queue.Enqueue(output);
                 Monitor.PulseAll(_queue);
             }
-
         }
 
         public int Read()

@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 
 namespace AdventOfCode.Day3
 {
     public static class Day3
     {
-        public static void Execute()
-        {
-            Console.WriteLine($"La distancia minima es Solution 1.1 {Day3.Part1_Version1()}");
-            Console.WriteLine($"La distancia minima es Solution 1.2 {Day3.Part1_Version2()}");
-            Console.WriteLine($"La Solution 2 {Day3.Part2()}");
-        }
-
         public static void ReadInput(out List<string> movesLine1, out List<string> movesLine2)
         {
             var input = System.IO.File.ReadAllText(@"Inputs\inputDay3.txt");
@@ -101,10 +96,19 @@ namespace AdventOfCode.Day3
             positionsLine1 = Utils.GetPath(origin, commands1);
             positionsLine2 = Utils.GetPath(origin, commands2);
 
-            joinList = positionsLine1
-                .Intersect(positionsLine2)
-                .Where(p => p.X != 0 && p.Y != 0)
-                .ToList();
+            var d2 = positionsLine2.ToHashSet();
+
+            joinList = new List<Point>();
+            Point tmp;
+
+            for (int i = 0; i < positionsLine1.Count; i++)
+            {
+                tmp = positionsLine1[i];
+                if (d2.Contains(tmp) && tmp.X != 0 && tmp.Y != 0)
+                {
+                    joinList.Add(tmp);
+                }
+            }
 
             foreach (var point in joinList)
             {
@@ -168,14 +172,14 @@ namespace AdventOfCode.Day3
             return Move(origin, direction, positions);
         }
 
-
         public static List<Point> GetPath(Point origin, List<string> movements)
         {
             var previous = origin;
             var path = new List<Point>();
             foreach (var movement in movements)
             {
-                path.AddRange(GetPath(previous, movement));
+                var subPath = GetPath(previous, movement);
+                path.AddRange(subPath);
                 previous = path.Last();
             }
 
@@ -300,9 +304,22 @@ namespace AdventOfCode.Day3
                 return false;
             }
 
-            Point mys = (Point)obj;
-            return X == mys.X && Y == mys.Y;
+            return Equals((Point)obj);
         }
+
+        public bool Equals(Point other)
+        {
+            return X == other.X && Y == other.Y;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (X * 397) ^ Y;
+            }
+        }
+
 
         public static Point Center => new Point(0, 0);
     }

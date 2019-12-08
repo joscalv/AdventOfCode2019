@@ -5,7 +5,7 @@ namespace AdventOfCode.Day1
 {
     public static class Day1
     {
-        public static void Execute()
+        public static int Execute()
         {
             string line;
 
@@ -20,7 +20,7 @@ namespace AdventOfCode.Day1
                 }
             }
 
-            Console.WriteLine($"Solution Day 1.2 {fuel}");
+            return fuel;
         }
     }
 }

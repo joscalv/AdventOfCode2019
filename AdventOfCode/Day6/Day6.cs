@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -6,12 +7,6 @@ namespace AdventOfCode.Day6
 {
     public static class Day6
     {
-        public static void Execute()
-        {
-            Console.WriteLine($"The number of orbits is {Day6.Part1()}");
-            Console.WriteLine($"Steps to get SANTA {Day6.Part2()}");
-        }
-
         public static int Part1()
         {
             var orbits = ReadInput();

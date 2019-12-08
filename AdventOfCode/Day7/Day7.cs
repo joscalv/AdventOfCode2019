@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
@@ -10,16 +12,6 @@ namespace AdventOfCode.Day7
 {
     public class Day7
     {
-        public static async Task Execute()
-        {
-            var result = Part1();
-            Console.WriteLine($"7.1. Amplification Circuit: {result}");
-
-            var result2 = await Part2();
-            Console.WriteLine($"7.2. Amplification Circuit With Feedback Loop : {result2}");
-
-        }
-
         public static int Part1()
         {
             var program = ReadInput();
@@ -65,7 +57,7 @@ namespace AdventOfCode.Day7
         {
             var inputConsole = new InputFixedList(setting, previousOutput);
             var outputConsole = new OutputFixed();
-            IntCodeComputer computer = new IntCodeComputer((int[])program.Clone(), inputConsole, outputConsole);
+            IntCodeComputer computer = new IntCodeComputer((int[])program, inputConsole, outputConsole);
             computer.Execute();
             return outputConsole.GetOutPut();
         }
@@ -86,7 +78,8 @@ namespace AdventOfCode.Day7
             return result;
         }
 
-        public static async Task<int> ExecuteCombinationWithFeedback(int[] program, (int A, int B, int C, int D, int E) combination)
+        public static async Task<int> ExecuteCombinationWithFeedback(int[] program,
+            (int A, int B, int C, int D, int E) combination)
         {
             var c1 = new InputOutputLinked(combination.A, 0);
             var c2 = new InputOutputLinked(combination.B);
@@ -94,11 +87,11 @@ namespace AdventOfCode.Day7
             var c4 = new InputOutputLinked(combination.D);
             var c5 = new InputOutputLinked(combination.E);
 
-            var computer1 = new IntCodeComputer((int[])program.Clone(), c1, c2);
-            var computer2 = new IntCodeComputer((int[])program.Clone(), c2, c3);
-            var computer3 = new IntCodeComputer((int[])program.Clone(), c3, c4);
-            var computer4 = new IntCodeComputer((int[])program.Clone(), c4, c5);
-            var computer5 = new IntCodeComputer((int[])program.Clone(), c5, c1);
+            var computer1 = new IntCodeComputer(program, c1, c2);
+            var computer2 = new IntCodeComputer(program, c2, c3);
+            var computer3 = new IntCodeComputer(program, c3, c4);
+            var computer4 = new IntCodeComputer(program, c4, c5);
+            var computer5 = new IntCodeComputer(program, c5, c1);
 
             var t1 = Task.Run(() => computer1.Execute());
             var t2 = Task.Run(() => computer2.Execute());
@@ -133,7 +126,6 @@ namespace AdventOfCode.Day7
                                 {
                                     if (d != a && d != b && d != c)
                                     {
-
                                         for (int e = min; e <= max; e++)
                                         {
                                             if (e != a && e != b && e != c && e != d)
@@ -143,14 +135,13 @@ namespace AdventOfCode.Day7
                                         }
                                     }
                                 }
-
                             }
                         }
                     }
                 }
             }
+
             return combinations;
         }
     }
-
 }
