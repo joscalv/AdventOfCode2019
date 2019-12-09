@@ -2,6 +2,6 @@
 {
     public interface IConsoleInput
     {
-        int Read();
+        long Read();
     }
 }

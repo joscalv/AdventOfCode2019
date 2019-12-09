@@ -4,12 +4,12 @@ namespace AdventOfCode.IntCode.IO
 {
     public class ConsoleInput : IConsoleInput
     {
-        public int Read()
+        public long Read()
         {
             Console.Write("Insert value: ");
             var value = Console.ReadLine();
 
-            if (int.TryParse(value, out var result))
+            if (long.TryParse(value, out var result))
             {
                 return result;
             }
@@ -21,7 +21,7 @@ namespace AdventOfCode.IntCode.IO
 
     public class ConsoleOutput : IConsoleOutput
     {
-        public void Write(int output)
+        public void Write(long output)
         {
             Console.WriteLine(output);
         }
@@ -29,13 +29,13 @@ namespace AdventOfCode.IntCode.IO
 
     public class InputFixedValue : IConsoleInput
     {
-        private readonly int _value;
+        private readonly long _value;
 
-        public InputFixedValue(int value)
+        public InputFixedValue(long value)
         {
             _value = value;
         }
-        public int Read()
+        public long Read()
         {
             return _value;
 

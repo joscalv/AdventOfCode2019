@@ -10,16 +10,16 @@ namespace AdventOfCode.Day2
     public static class Day2
     {
 
-        private static readonly int[] Program;
+        private static readonly long[] Program;
 
         static Day2()
         {
             Program = ReadInput();
         }
 
-        public static int Part1()
+        public static long Part1()
         {
-            var program = (int[])Program.Clone();
+            var program = (long[])Program.Clone();
             program[1] = 12;
             program[2] = 2;
 
@@ -31,7 +31,7 @@ namespace AdventOfCode.Day2
 
         public static int Part2()
         {
-            var program = (int[])Program.Clone();
+            var program = (long[])Program.Clone();
 
             for (int noun = 0; noun < 100; noun++)
             {
@@ -54,11 +54,11 @@ namespace AdventOfCode.Day2
 
         }
 
-        private static int[] ReadInput()
+        private static long[] ReadInput()
         {
             var program = File.ReadAllText(@"Inputs\inputDay2.txt")
                 .Split(',')
-                .Select(int.Parse)
+                .Select(long.Parse)
                 .ToArray();
 
             return program;

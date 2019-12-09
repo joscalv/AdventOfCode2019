@@ -2,6 +2,6 @@
 {
     public interface IConsoleOutput
     {
-        void Write(int output);
+        void Write(long output);
     }
 }

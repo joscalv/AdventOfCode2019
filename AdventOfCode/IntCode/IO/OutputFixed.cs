@@ -2,13 +2,13 @@
 {
     public class OutputFixed : IConsoleOutput
     {
-        private int _output;
+        private long _output;
 
-        public void Write(int output)
+        public void Write(long output)
         {
             _output = output;
         }
 
-        public int GetOutPut() => _output;
+        public long GetOutPut() => _output;
     }
 }

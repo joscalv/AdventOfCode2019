@@ -9,9 +9,11 @@ namespace AdventOfCode2019Test
         [Fact]
         public void ExecuteInstruction1Test()
         {
-            int[] program = new[] { 10001, 1, 1, 1 };
-            var pc = 0;
-            var instruction01 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null);
+            long[] program = new long[] { 10001, 1, 1, 1 };
+            long pc = 0;
+
+            MemoryController memoryController = new MemoryController(program);
+            var instruction01 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), memoryController);
             instruction01?.Execute(program, ref pc);
 
             Assert.Equal(2, program[3]);
@@ -19,10 +21,11 @@ namespace AdventOfCode2019Test
 
         public void ExecuteInstruction12Test()
         {
-            int[] program = new[] { 11101, 1, 1, 2 };
-            int[] expected = new[] { 11101, 0, 11104, 2 };
-            var pc = 0;
-            var instruction01 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null);
+            long[] program = { 11101, 1, 1, 2 };
+            long[] expected = { 11101, 0, 11104, 2 };
+            MemoryController memoryController = new MemoryController(program);
+            long pc = 0;
+            var instruction01 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), memoryController);
             instruction01?.Execute(program, ref pc);
 
             Assert.Equal(expected, program);
@@ -32,9 +35,10 @@ namespace AdventOfCode2019Test
         [Fact]
         public void ExecuteInstruction2Test()
         {
-            int[] program = new[] { 10002, 2, 2, 1 };
-            var pc = 0;
-            var instruction02 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null);
+            long[] program = { 10002, 2, 2, 1 };
+            MemoryController memoryController = new MemoryController(program);
+            long pc = 0;
+            var instruction02 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), memoryController);
             instruction02?.Execute(program, ref pc);
 
             Assert.Equal(4, program[3]);

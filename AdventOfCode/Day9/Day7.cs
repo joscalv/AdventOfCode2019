@@ -1,34 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
-namespace AdventOfCode.Day7
+namespace AdventOfCode.Day9
 {
-    public class Day7
+    public class Day9
     {
         private static readonly long[] Program = ReadInput();
 
         public static void Init() { }
         public static long Part1()
         {
-            return Day7Part1.AmplificationCircuit(Program);
+            var outputConsole = new OutputFixed();
+            var computer = new IntCodeComputer(Program, new InputFixedValue(1), outputConsole);
+            var result = computer.Execute();
+
+            return outputConsole.GetOutPut();
         }
 
-        public static async Task<long> Part2()
+        public static long Part2()
         {
-            return await Day7Part2.AmplificationCircuitWithFeedbackLoop(Program);
+            var outputConsole = new OutputFixed();
+            var computer = new IntCodeComputer(Program, new InputFixedValue(2), outputConsole);
+            var result = computer.Execute();
+
+            return outputConsole.GetOutPut();
         }
+
+
 
         private static long[] ReadInput()
         {
             var program = File
-                .ReadAllText(@"Inputs\inputDay7.txt")
+                .ReadAllText(@"Inputs\inputDay9.txt")
                 .Split(',')
                 .Select(long.Parse).ToArray();
             return program;

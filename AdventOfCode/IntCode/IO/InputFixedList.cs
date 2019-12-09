@@ -2,19 +2,19 @@
 {
     public class InputFixedList : IConsoleInput
     {
-        private readonly int[] _values;
+        private readonly long[] _values;
         private int _readIndex = 0;
 
-        public InputFixedList(int cfg, int previousInput)
+        public InputFixedList(long cfg, long previousInput)
         {
             _values = new[] { cfg, previousInput };
         }
-        public InputFixedList(int[] values)
+        public InputFixedList(long[] values)
         {
             _values = values;
         }
 
-        public int Read()
+        public long Read()
         {
             return _values[(_readIndex++) % _values.Length];
         }

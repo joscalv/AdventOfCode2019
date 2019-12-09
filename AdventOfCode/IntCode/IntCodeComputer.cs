@@ -2,7 +2,6 @@
 
 namespace AdventOfCode.IntCode
 {
-
     public enum OptCode
     {
         OptCode1 = 1,
@@ -13,7 +12,7 @@ namespace AdventOfCode.IntCode
         OptCode6 = 6,
         OptCode7 = 7,
         OptCode8 = 8,
-        OptCode9 = 9 // Adjust relative base
+        OptCode9 = 9 // Adjust relative base position
     }
 
     public enum ParameterMode
@@ -23,28 +22,35 @@ namespace AdventOfCode.IntCode
         RelativeMode = 2
     }
 
-    public class IntCodeComputer : IPositionBaseManager
+    public enum Parameter
     {
-        private readonly int[] _program;
+        Parameter1 = 0,
+        Parameter2 = 1,
+        Parameter3=2
+    }
+
+    public class IntCodeComputer
+    {
+        private readonly long[] _program;
         private readonly IConsoleInput _input;
         private readonly IConsoleOutput _output;
-        private int _positionBase;
+        private readonly IMemoryController _memoryController;
 
-        public IntCodeComputer(int[] program, IConsoleInput input = null, IConsoleOutput output = null)
+        public IntCodeComputer(long[] program, IConsoleInput input = null, IConsoleOutput output = null)
         {
-            _program = (int[])program.Clone();
+            _program = (long[])program.Clone();
             _input = input ?? new ConsoleInput();
             _output = output ?? new ConsoleOutput();
-            _positionBase = 0;
+            _memoryController = new MemoryController(_program);
         }
 
-        public int[] Execute()
+        public long[] Execute()
         {
-            int pc = 0;
+            long pc = 0;
             while (pc < _program.Length)
             {
-                int instructionCode = _program[pc];
-                var instruction = InstructionUtils.GetInstruction(_program, pc, _input, _output, this);
+                long instructionCode = _program[pc];
+                var instruction = InstructionUtils.GetInstruction(_program, pc, _input, _output, _memoryController);
                 if (instruction == null)
                 {
                     return _program;
@@ -55,21 +61,5 @@ namespace AdventOfCode.IntCode
         }
 
 
-        public void IncreatePositionBase(int value)
-        {
-            _positionBase = _positionBase + value;
-        }
-
-        public int GetPositionBase()
-        {
-            return _positionBase;
-        }
-    }
-
-    public interface IPositionBaseManager
-    {
-        void IncreatePositionBase(int value);
-
-        int GetPositionBase();
     }
 }

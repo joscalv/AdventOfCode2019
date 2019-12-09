@@ -9,7 +9,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void GetInstruction1Test()
         {
-            int[] program = new[] { 00001, 1, 1, 1 };
+            long[] program = { 00001, 1, 1, 1 };
             var instruction01 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null) as Instruction01;
             Assert.NotNull(instruction01);
         }
@@ -17,7 +17,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void GetInstruction2Test()
         {
-            int[] program = new[] { 00002, 1, 1, 1 };
+            long[] program = { 00002, 1, 1, 1 };
             var instruction02 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null) as Instruction02;
             Assert.NotNull(instruction02);
 
@@ -26,7 +26,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void GetInstruction3Test()
         {
-            int[] program = new[] { 00003, 50, 0 };
+            long[] program = { 00003, 50, 0 };
             var instruction03 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null) as Instruction03;
             Assert.NotNull(instruction03);
 
@@ -35,7 +35,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void GetInstruction4Test()
         {
-            int[] program = new[] { 00004, 50, 0 };
+            long[] program = { 00004, 50, 0 };
             var instruction03 = InstructionUtils.GetInstruction(program, 0, new ConsoleInput(), new ConsoleOutput(), null) as Instruction04;
             Assert.NotNull(instruction03);
 

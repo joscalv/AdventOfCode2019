@@ -2,7 +2,7 @@
 {
     public class Instruction01 : InstructionBase
     {
-        public Instruction01(int instructionCode, IPositionBaseManager positionBaseManager) : base(instructionCode, positionBaseManager)
+        public Instruction01(long instructionCode, IMemoryController memoryController) : base(instructionCode, memoryController)
         {
         }
 
@@ -10,12 +10,12 @@
         public override OptCode Code => OptCode.OptCode1;
 
 
-        public override void ExecuteInstruction(int[] program, ref int pc)
+        public override void ExecuteInstruction(long[] program, ref long pc)
         {
-            var value1 = GetValue(0, program, pc);
-            var value2 = GetValue(1, program, pc);
+            var value1 = GetValue(Parameter.Parameter1, program, pc);
+            var value2 = GetValue(Parameter.Parameter2, program, pc);
             var result = value1 + value2;
-            WriteValue(result, 2, program, pc);
+            WriteValue(result, Parameter.Parameter3, program, pc);
         }
     }
 }

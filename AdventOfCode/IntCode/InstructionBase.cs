@@ -2,24 +2,23 @@
 {
     public abstract class InstructionBase
     {
-        private readonly IPositionBaseManager _positionBaseManager;
+        private readonly IMemoryController _memoryController;
 
-        protected InstructionBase(int instructionCode, IPositionBaseManager positionBaseManager)
+        protected InstructionBase(long instructionCode, IMemoryController memoryController)
         {
-            _positionBaseManager = positionBaseManager;
+            _memoryController = memoryController;
             Modes = InstructionUtils.ParseParameterMode(instructionCode);
         }
 
         public abstract int Length { get; }
+        
         public abstract OptCode Code { get; }
 
         protected ParameterMode[] Modes { get; }
 
-        public abstract void ExecuteInstruction(int[] program, ref int pc);
-
-        public void Execute(int[] program, ref int pc)
+        public void Execute(long[] program, ref long pc)
         {
-            int originalPc = pc;
+            long originalPc = pc;
 
             ExecuteInstruction(program, ref originalPc);
             if (pc == originalPc)
@@ -32,49 +31,38 @@
             }
         }
 
-        protected ParameterMode GetModeAt(int i)
-        {
-            if (i < 0 || i > 2)
-            {
-                return ParameterMode.PositionMode;
-            }
+        public abstract void ExecuteInstruction(long[] program, ref long pc);
 
-            return Modes[i];
+        protected ParameterMode GetModeAt(Parameter parameter)
+        {
+            return Modes[(int)parameter];
         }
 
-        protected int GetValue(int i, int[] program, int pc)
+        protected long GetValue(Parameter parameter, long[] program, long pc)
         {
-            var value = program[pc + 1 + i];
-            var parameterMode = GetModeAt(i);
-            if (parameterMode == ParameterMode.ImmediateMode)
+            var value = program[pc + 1 + (int)parameter];
+            var positionMode = GetModeAt(parameter);
+            if (positionMode == ParameterMode.ImmediateMode)
             {
                 return value;
             }
 
-            if (parameterMode == ParameterMode.PositionMode)
-            {
-                return program[value];
-            }
-
-            if (parameterMode == ParameterMode.RelativeMode)
-            {
-                int posBase = _positionBaseManager?.GetPositionBase() ?? 0;
-                return posBase + program[value];
-            }
-
-            return 0;
+            return _memoryController.GetValue(positionMode, value);
         }
 
-        protected void WriteValue(int value, int i, int[] program, int pc)
+        protected void WriteValue(long value, Parameter parameter, long[] program, long pc)
         {
-            if (GetModeAt(i) == ParameterMode.ImmediateMode)
+            int parameterOffset = (int) parameter;
+            var positionMode = GetModeAt(parameter);
+
+            if (positionMode == ParameterMode.ImmediateMode)
             {
-                program[pc + 1 + i] = value;
+                program[pc + 1 + parameterOffset] = value;
             }
             else
             {
-                var direction = program[pc + 1 + i];
-                program[direction] = value;
+                var direction = program[pc + 1 + parameterOffset];
+                _memoryController.WriteValue(positionMode, direction, value);
             }
         }
     }

@@ -6,21 +6,21 @@ namespace AdventOfCode.IntCode.IO
 {
     public class InputOutputLinked : IConsoleOutput, IConsoleInput
     {
-        private readonly Queue<int> _queue;
+        private readonly Queue<long> _queue;
 
-        public InputOutputLinked(params int[] values)
+        public InputOutputLinked(params long[] values)
         {
             if (values != null && values.Any())
             {
-                _queue = new Queue<int>(values);
+                _queue = new Queue<long>(values);
             }
             else
             {
-                _queue = new Queue<int>();
+                _queue = new Queue<long>();
             }
         }
 
-        public void Write(int output)
+        public void Write(long output)
         {
             lock (_queue)
             {
@@ -29,10 +29,10 @@ namespace AdventOfCode.IntCode.IO
             }
         }
 
-        public int Read()
+        public long Read()
         {
             var count = 0;
-            int result;
+            long result;
             lock (_queue)
             {
                 while (count == 0)
@@ -51,7 +51,7 @@ namespace AdventOfCode.IntCode.IO
             return result;
         }
 
-        public int GetOutput()
+        public long GetOutput()
         {
             lock (_queue)
             {

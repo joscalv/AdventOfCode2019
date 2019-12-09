@@ -4,38 +4,38 @@ namespace AdventOfCode.IntCode
 {
     public static class InstructionUtils
     {
-        public static InstructionBase GetInstruction(int[] program, int pc, IConsoleInput input, IConsoleOutput output, IPositionBaseManager posBaseManager)
+        public static InstructionBase GetInstruction(long[] program, long pc, IConsoleInput input, IConsoleOutput output, IMemoryController memoryController)
         {
             var instructionCode = program[pc];
             InstructionBase instruction = null;
             switch (ParseInstructionCode(instructionCode))
             {
                 case OptCode.OptCode1:
-                    instruction = new Instruction01(instructionCode, posBaseManager);
+                    instruction = new Instruction01(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode2:
-                    instruction = new Instruction02(instructionCode, posBaseManager);
+                    instruction = new Instruction02(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode3:
-                    instruction = new Instruction03(instructionCode, input, posBaseManager);
+                    instruction = new Instruction03(instructionCode, input, memoryController);
                     break;
                 case OptCode.OptCode4:
-                    instruction = new Instruction04(instructionCode, output, posBaseManager);
+                    instruction = new Instruction04(instructionCode, output, memoryController);
                     break;
                 case OptCode.OptCode5:
-                    instruction = new Instruction05(instructionCode, posBaseManager);
+                    instruction = new Instruction05(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode6:
-                    instruction = new Instruction06(instructionCode, posBaseManager);
+                    instruction = new Instruction06(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode7:
-                    instruction = new Instruction07(instructionCode, posBaseManager);
+                    instruction = new Instruction07(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode8:
-                    instruction = new Instruction08(instructionCode, posBaseManager);
+                    instruction = new Instruction08(instructionCode, memoryController);
                     break;
                 case OptCode.OptCode9:
-                    instruction = new Instruction09(instructionCode, posBaseManager);
+                    instruction = new Instruction09(instructionCode, memoryController);
                     break;
                 default:
                     instruction = null;
@@ -45,15 +45,15 @@ namespace AdventOfCode.IntCode
             return instruction;
         }
 
-        public static OptCode ParseInstructionCode(int instructionCode)
+        public static OptCode ParseInstructionCode(long instructionCode)
         {
-            int code = instructionCode % 100;
+            var code = instructionCode % 100;
             return (OptCode)code;
         }
 
-        public static ParameterMode[] ParseParameterMode(int instructionCode)
+        public static ParameterMode[] ParseParameterMode(long instructionCode)
         {
-            var tmp = (int)instructionCode / 100;
+            var tmp = (long)instructionCode / 100;
             ParameterMode[] modes = new ParameterMode[3];
             int i = 0;
             while (tmp > 0)

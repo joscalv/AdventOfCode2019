@@ -2,12 +2,12 @@
 {
     public class Instruction09 : InstructionBase
     {
-        private readonly IPositionBaseManager _posBaseManager;
+        private readonly IMemoryController _posBaseManager;
 
-        public Instruction09(int instructionCode, IPositionBaseManager positionBaseManager) : base(instructionCode,
-            positionBaseManager)
+        public Instruction09(long instructionCode, IMemoryController memoryController) : base(instructionCode,
+            memoryController)
         {
-            _posBaseManager = positionBaseManager;
+            _posBaseManager = memoryController;
         }
 
         public override int Length => 2;
@@ -15,10 +15,10 @@
         public override OptCode Code => OptCode.OptCode9;
 
 
-        public override void ExecuteInstruction(int[] program, ref int pc)
+        public override void ExecuteInstruction(long[] program, ref long pc)
         {
             var value = GetValue(0, program, pc);
-            _posBaseManager.IncreatePositionBase(value);
+            _posBaseManager.IncreasePositionBase(value);
         }
     }
 }

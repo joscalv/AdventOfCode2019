@@ -10,18 +10,18 @@ namespace AdventOfCode.Day5
 
     public static class Day5
     {
-        private static readonly int[] Program = ReadInput();
-        public static int Part1()
+        private static readonly long[] Program = ReadInput();
+        public static long Part1()
         {
             return Execute(1);
         }
 
-        public static int Part2()
+        public static long Part2()
         {
             return Execute(5);
         }
 
-        public static int Execute(int inputValue)
+        public static long Execute(int inputValue)
         {
            
 
@@ -34,11 +34,11 @@ namespace AdventOfCode.Day5
             return output.GetOutPut();
         }
 
-        private static int[] ReadInput()
+        private static long[] ReadInput()
         {
             var program = File.ReadAllText(@"Inputs\inputDay5.txt")
                 .Split(',')
-                .Select(int.Parse)
+                .Select(long.Parse)
                 .ToArray();
             return program;
         }

@@ -6,8 +6,8 @@ namespace AdventOfCode.IntCode
     {
         private readonly IConsoleOutput _output;
 
-        public Instruction04(int instructionCode, IConsoleOutput output, IPositionBaseManager positionBaseManager) :
-            base(instructionCode, positionBaseManager)
+        public Instruction04(long instructionCode, IConsoleOutput output, IMemoryController memoryController) :
+            base(instructionCode, memoryController)
         {
             _output = output;
         }
@@ -16,7 +16,7 @@ namespace AdventOfCode.IntCode
         public override OptCode Code => OptCode.OptCode2;
 
 
-        public override void ExecuteInstruction(int[] program, ref int pc)
+        public override void ExecuteInstruction(long[] program, ref long pc)
         {
             var value = GetValue(0, program, pc);
 

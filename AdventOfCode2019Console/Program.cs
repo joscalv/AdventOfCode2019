@@ -11,6 +11,7 @@ using AdventOfCode.Day5;
 using AdventOfCode.Day6;
 using AdventOfCode.Day7;
 using AdventOfCode.Day8;
+using AdventOfCode.Day9;
 
 namespace AdventOfCode2019Console
 {
@@ -62,8 +63,15 @@ namespace AdventOfCode2019Console
             ExecuteSolution("8.2 Decode Image Complex", Day8.Part2ComplexImage);
             ExecuteSolution("8.2 Decode Image Simple", Day8.Part2SimpleImage);
 
-            Console.WriteLine($"{Environment.NewLine}Day 9");
+            Console.WriteLine($"{Environment.NewLine}--- Day 9: Sensor Boost ---");
+            Day8.Init();
+            ExecuteSolution("9.1 BOOST keycode:", Day9.Part1);
+            ExecuteSolution("9.2 Coordinates of the distress signal", Day9.Part2);
+        }
 
+        private static void ExecuteSolution(string title, Func<long> solution)
+        {
+            ExecuteSolution(title, () => solution.Invoke().ToString());
         }
 
         private static void ExecuteSolution(string title, Func<int> solution)

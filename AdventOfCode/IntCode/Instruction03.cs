@@ -6,8 +6,8 @@ namespace AdventOfCode.IntCode
     {
         private readonly IConsoleInput _input;
 
-        public Instruction03(int instructionCode, IConsoleInput input, IPositionBaseManager positionBaseManager) : base(
-            instructionCode, positionBaseManager)
+        public Instruction03(long instructionCode, IConsoleInput input, IMemoryController memoryController) : base(
+            instructionCode, memoryController)
         {
             _input = input;
         }
@@ -16,7 +16,7 @@ namespace AdventOfCode.IntCode
         public override OptCode Code => OptCode.OptCode2;
 
 
-        public override void ExecuteInstruction(int[] program, ref int pc)
+        public override void ExecuteInstruction(long[] program, ref long pc)
         {
             var input = _input.Read();
 
