@@ -29,19 +29,19 @@ namespace AdventOfCode2019Console
 
             Console.WriteLine($"{Environment.NewLine}--- Day 3: Crossed Wires ---");
             Day3.Init();
-            ExecuteSolution("3.1.A Minimun distance (using segments): ", Day3.Part1_Version1);
-            ExecuteSolution("3.1.B Minimun distance (using all points): ", Day3.Part1_Version2);
-            ExecuteSolution("3.2 Sunny with a Chance of Asteroids. Thermal Radiators:", Day3.Part2);
+            ExecuteSolution("3.1.A Minimun distance (using segments) ", Day3.Part1_Version1);
+            ExecuteSolution("3.1.B Minimun distance (using all points) ", Day3.Part1_Version2);
+            ExecuteSolution("3.2   Sunny with a Chance of Asteroids. Thermal Radiators", Day3.Part2);
 
             Console.WriteLine($"{Environment.NewLine}--- Day 4: Secure Container ---");
-            ExecuteSolution("4.1. Sunny with a Chance of Asteroids: ", Day4.Part1);
-            ExecuteSolution("4.2 Sunny with a Chance of Asteroids. Thermal Radiators:", Day4.Part2);
+            ExecuteSolution("4.1 Sunny with a Chance of Asteroids ", Day4.Part1);
+            ExecuteSolution("4.2 Sunny with a Chance of Asteroids. Thermal Radiators", Day4.Part2);
 
 
             Console.WriteLine($"{Environment.NewLine}--- Day 5: Sunny with a Chance of Asteroids ---");
             Day5.Init();
-            ExecuteSolution("5.1. Sunny with a Chance of Asteroids: ", Day5.Part1);
-            ExecuteSolution("5.2. Sunny with a Chance of Asteroids. Thermal Radiators:", Day5.Part2);
+            ExecuteSolution("5.1 Sunny with a Chance of Asteroids ", Day5.Part1);
+            ExecuteSolution("5.2 Sunny with a Chance of Asteroids. Thermal Radiators:", Day5.Part2);
 
 
             Console.WriteLine($"{Environment.NewLine}--- Day 6: Universal Orbit Map ---");
@@ -64,8 +64,8 @@ namespace AdventOfCode2019Console
             ExecuteSolution("8.2 Decode Image Simple", Day8.Part2SimpleImage);
 
             Console.WriteLine($"{Environment.NewLine}--- Day 9: Sensor Boost ---");
-            Day8.Init();
-            ExecuteSolution("9.1 BOOST keycode:", Day9.Part1);
+            Day9.Init();
+            ExecuteSolution("9.1 BOOST keycode", Day9.Part1);
             ExecuteSolution("9.2 Coordinates of the distress signal", Day9.Part2);
         }
 
