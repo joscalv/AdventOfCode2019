@@ -2,9 +2,9 @@
 {
     public class Instruction05 : InstructionBase
     {
-        public Instruction05(int instructionCode) : base(instructionCode)
+        public Instruction05(int instructionCode, IPositionBaseManager positionBaseManager) : base(instructionCode,
+            positionBaseManager)
         {
-
         }
 
         public override int Length => 3;
@@ -20,6 +20,5 @@
                 pc = GetValue(1, program, pc);
             }
         }
-
     }
 }

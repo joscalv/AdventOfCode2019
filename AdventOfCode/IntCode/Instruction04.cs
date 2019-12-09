@@ -6,7 +6,8 @@ namespace AdventOfCode.IntCode
     {
         private readonly IConsoleOutput _output;
 
-        public Instruction04(int instructionCode, IConsoleOutput output) : base(instructionCode)
+        public Instruction04(int instructionCode, IConsoleOutput output, IPositionBaseManager positionBaseManager) :
+            base(instructionCode, positionBaseManager)
         {
             _output = output;
         }
@@ -21,6 +22,5 @@ namespace AdventOfCode.IntCode
 
             _output.Write(value);
         }
-
     }
 }

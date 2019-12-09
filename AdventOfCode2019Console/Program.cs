@@ -61,6 +61,9 @@ namespace AdventOfCode2019Console
             ExecuteSolution("8.1 Count Zeros Simple", Day8.Part1SimpleImage);
             ExecuteSolution("8.2 Decode Image Complex", Day8.Part2ComplexImage);
             ExecuteSolution("8.2 Decode Image Simple", Day8.Part2SimpleImage);
+
+            Console.WriteLine($"{Environment.NewLine}Day 9");
+
         }
 
         private static void ExecuteSolution(string title, Func<int> solution)

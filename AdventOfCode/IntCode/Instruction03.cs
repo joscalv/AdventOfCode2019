@@ -6,7 +6,8 @@ namespace AdventOfCode.IntCode
     {
         private readonly IConsoleInput _input;
 
-        public Instruction03(int instructionCode, IConsoleInput input) : base(instructionCode)
+        public Instruction03(int instructionCode, IConsoleInput input, IPositionBaseManager positionBaseManager) : base(
+            instructionCode, positionBaseManager)
         {
             _input = input;
         }
@@ -20,8 +21,6 @@ namespace AdventOfCode.IntCode
             var input = _input.Read();
 
             WriteValue(input, 0, program, pc);
-
         }
-
     }
 }

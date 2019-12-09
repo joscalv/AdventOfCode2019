@@ -2,7 +2,7 @@
 {
     public class Instruction02 : InstructionBase
     {
-        public Instruction02(int instructionCode) : base(instructionCode)
+        public Instruction02(int instructionCode, IPositionBaseManager positionBaseManager) : base(instructionCode, positionBaseManager)
         {
         }
 
