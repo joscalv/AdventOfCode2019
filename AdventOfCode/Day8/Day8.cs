@@ -5,18 +5,14 @@ using System.Text;
 
 namespace AdventOfCode.Day8
 {
-    public static class Day8
+    public class Day8
     {
 
-        private static readonly int[] Input = ReadInput().StringToIntArray();
+        private readonly int[] Input = ReadInput().StringToIntArray();
         public static int Width = 25;
         public static int Height = 6;
 
-        public static void Init()
-        {
-        }
-
-        public static int Part1ComplexImage()
+       public int Part1ComplexImage()
         {
             var image = new ComplexImage(Width, Height, Input);
 
@@ -38,10 +34,10 @@ namespace AdventOfCode.Day8
             return unoes * two;
         }
 
-        public static string Part2ComplexImage()
+        public string Part2ComplexImage()
         {
             var input = ReadInput();
-            var imageBytes = StringToIntArray(input);
+            var imageBytes = input.StringToIntArray();
             var image = new ComplexImage(Width, Height, imageBytes);
 
             var result = image.DecodeImage();
@@ -63,13 +59,13 @@ namespace AdventOfCode.Day8
             return resultStirng.ToString();
         }
 
-        public static int Part1SimpleImage()
+        public int Part1SimpleImage()
         {
             var image = new Image(Input, Width, Height);
             return image.GetNumberOf1Mult2WhenOfLayerWhenZeroIsMinimal();
         }
 
-        public static string Part2SimpleImage()
+        public string Part2SimpleImage()
         {
             var image = new Image(Input, Width, Height);
 
@@ -83,6 +79,11 @@ namespace AdventOfCode.Day8
             return File.ReadAllText(@"Inputs\inputDay8.txt");
         }
 
+      
+    }
+
+    public static class Utils
+    {
         public static int[] StringToIntArray(this string s)
         {
             int length = s.Length;
@@ -94,10 +95,7 @@ namespace AdventOfCode.Day8
 
             return result;
         }
-    }
 
-    public static class Utils
-    {
         public static int NumberOf(int[][] dataLayer, int value)
         {
             return dataLayer.SelectMany(v => v).Count(v => v == value);

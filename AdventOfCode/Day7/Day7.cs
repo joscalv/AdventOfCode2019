@@ -10,17 +10,16 @@ namespace AdventOfCode.Day7
 {
     public class Day7
     {
-        private static readonly long[] Program = ReadInput();
+        private readonly long[] _program = ReadInput();
 
-        public static void Init() { }
-        public static long Part1()
+      public long Part1()
         {
-            return Day7Part1.AmplificationCircuit(Program);
+            return Day7Part1.AmplificationCircuit(_program);
         }
 
-        public static async Task<long> Part2()
+        public async Task<long> Part2()
         {
-            return await Day7Part2.AmplificationCircuitWithFeedbackLoop(Program);
+            return await Day7Part2.AmplificationCircuitWithFeedbackLoop(_program);
         }
 
         private static long[] ReadInput()

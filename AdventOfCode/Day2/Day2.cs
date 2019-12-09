@@ -7,19 +7,19 @@ using AdventOfCode.IntCode;
 namespace AdventOfCode.Day2
 {
 
-    public static class Day2
+    public class Day2
     {
 
-        private static readonly long[] Program;
+        private  readonly long[] _program;
 
-        static Day2()
+        public Day2()
         {
-            Program = ReadInput();
+            _program = ReadInput();
         }
 
-        public static long Part1()
+        public long Part1()
         {
-            var program = (long[])Program.Clone();
+            var program = (long[])_program.Clone();
             program[1] = 12;
             program[2] = 2;
 
@@ -29,9 +29,9 @@ namespace AdventOfCode.Day2
             return program2[0];
         }
 
-        public static int Part2()
+        public int Part2()
         {
-            var program = (long[])Program.Clone();
+            var program = (long[])_program.Clone();
 
             for (int noun = 0; noun < 100; noun++)
             {

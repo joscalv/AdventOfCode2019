@@ -6,17 +6,14 @@ using System.Runtime.ExceptionServices;
 
 namespace AdventOfCode.Day3
 {
-    public static class Day3
+    public class Day3
     {
-        private static readonly List<string> MovesLine1;
-        private static readonly List<string> MovesLine2;
-        static Day3()
+        private readonly List<string> MovesLine1;
+        private readonly List<string> MovesLine2;
+
+        public Day3()
         {
             ReadInput(out MovesLine1, out MovesLine2);
-        }
-
-        public static void Init()
-        {
         }
 
         public static void ReadInput(out List<string> movesLine1, out List<string> movesLine2)
@@ -26,7 +23,7 @@ namespace AdventOfCode.Day3
             movesLine2 = input.Split("\n")[1].Split(',').ToList();
         }
 
-        public static int Part1_Version1()
+        public int Part1_Version1()
         {
 
             var minDistanceSolution1 = GetDistanceToClosestIntersectionUsingSegments(
@@ -38,7 +35,7 @@ namespace AdventOfCode.Day3
             return minDistanceSolution1;
         }
 
-        public static int Part1_Version2()
+        public int Part1_Version2()
         {
             var minDistanceSolution2 = GetDistanceToClosestIntersectionUsingAllPoints(
                 MovesLine1,
@@ -51,7 +48,7 @@ namespace AdventOfCode.Day3
             return minDistanceSolution2;
         }
 
-        public static int Part2()
+        public int Part2()
         {
             ReadInput(out var movesLine1, out var movesLine2);
 

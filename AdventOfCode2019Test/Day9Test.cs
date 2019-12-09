@@ -8,18 +8,19 @@ namespace AdventOfCode2019Test
 {
     public class Day9Test
     {
+        private readonly Day9 _day9= new Day9();
         [Fact]
         public void TestResultPart1()
         {
             long day9Part1Solution = 3989758265;
-            Assert.Equal(day9Part1Solution, Day9.Part1());
+            Assert.Equal(day9Part1Solution, _day9.Part1());
         }
 
         [Fact]
         public void TestResultPart2()
         {
             long day9Part2Solution = 76791;
-            Assert.Equal(day9Part2Solution, Day9.Part2());
+            Assert.Equal(day9Part2Solution, _day9.Part2());
         }
 
         [Fact]

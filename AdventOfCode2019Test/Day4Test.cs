@@ -6,11 +6,13 @@ namespace AdventOfCode2019Test
 {
     public class Day4Test
     {
+        private readonly Day4 _day4 = new Day4();
+        
         [Fact]
         public void Part1Test()
         {
             var expected = 2150;
-            var result = Day4.Part1();
+            var result = _day4.Part1();
             Assert.Equal(expected, result);
         }
 
@@ -18,7 +20,7 @@ namespace AdventOfCode2019Test
         public void Part2Test()
         {
             var expected = 1462;
-            var result = Day4.Part2();
+            var result = _day4.Part2();
             Assert.Equal(expected, result);
         }
     }

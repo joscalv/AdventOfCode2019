@@ -7,26 +7,22 @@ namespace AdventOfCode.Day9
 {
     public class Day9
     {
-        private static readonly long[] Program = ReadInput();
+        private readonly long[] _program = ReadInput();
 
-        public static void Init()
-        {
-        }
-
-        public static long Part1()
+        public long Part1()
         {
             var outputConsole = new OutputFixed();
             var computer = new IntCodeComputer(new InputFixedValue(1), outputConsole);
-            var result = computer.Execute(Program);
+            var result = computer.Execute(_program);
 
             return outputConsole.GetOutPut();
         }
 
-        public static long Part2()
+        public long Part2()
         {
             var outputConsole = new OutputFixed();
             var computer = new IntCodeComputer(new InputFixedValue(2), outputConsole);
-            var result = computer.Execute(Program);
+            var result = computer.Execute(_program);
 
             return outputConsole.GetOutPut();
         }

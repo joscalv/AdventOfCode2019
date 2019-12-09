@@ -8,6 +8,9 @@ namespace AdventOfCode2019Test
 {
     public class Day8Test
     {
+
+        private readonly Day8 _day8= new Day8();
+
         private string expectedResult2 =
             $"#    #  #  ##  ###  #  # \r\n" +
             $"#    #  # #  # #  # #  # \r\n" +
@@ -20,7 +23,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void Part1ComplexTest()
         {
-            var value = Day8.Part1ComplexImage();
+            var value = _day8.Part1ComplexImage();
 
             Assert.Equal(1215, value);
 
@@ -29,7 +32,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void Part1TestSimpleImage()
         {
-            var value = Day8.Part1SimpleImage();
+            var value = _day8.Part1SimpleImage();
 
             Assert.Equal(1215, value);
 
@@ -38,7 +41,7 @@ namespace AdventOfCode2019Test
         [Fact]
         public void Part2TestComplexImage()
         {
-            var value = Day8.Part2ComplexImage();
+            var value = _day8.Part2ComplexImage();
 
             Assert.Equal(expectedResult2, value);
 
@@ -47,7 +50,7 @@ namespace AdventOfCode2019Test
          [Fact]
         public void Part2TestSimpleImage()
         {
-            var value = Day8.Part2ComplexImage();
+            var value = _day8.Part2ComplexImage();
 
             Assert.Equal(expectedResult2, value);
 
@@ -57,7 +60,7 @@ namespace AdventOfCode2019Test
         public void DecodeTest()
         {
             string image = "123456789012";
-            var data = Day8.StringToIntArray(image);
+            var data = AdventOfCode.Day8.Utils.StringToIntArray(image);
             var img = new ComplexImage(3, 2, data);
             Assert.Equal(new int[] { 1, 2, 3 }, img.Data[0][0]);
             Assert.Equal(new int[] { 4, 5, 6 }, img.Data[0][1]);
@@ -71,7 +74,7 @@ namespace AdventOfCode2019Test
             string image = "123456789012";
             int[] expected = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 };
 
-            var result = Day8.StringToIntArray(image);
+            var result = AdventOfCode.Day8.Utils.StringToIntArray(image);
             Assert.Equal(expected, result);
 
         }

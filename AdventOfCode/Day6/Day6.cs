@@ -5,23 +5,19 @@ using System.Linq;
 
 namespace AdventOfCode.Day6
 {
-    public static class Day6
+    public class Day6
     {
 
-        private static readonly (string center, string satellite)[] Orbits = ReadInput();
+        private readonly (string center, string satellite)[] Orbits = ReadInput();
 
-        public static void Init()
-        {
-        }
-
-        public static int Part1()
+        public int Part1()
         {
             var orbitAnalyzer = new OrbitAnalyzer(Orbits);
             var value = orbitAnalyzer.GetNumberOfOrbits();
             return value;
         }
 
-        public static int Part2()
+        public int Part2()
         {
             var orbitAnalyzer = new OrbitAnalyzer(Orbits);
             var value = orbitAnalyzer.GetOrbitalTransfers("YOU", "SAN");

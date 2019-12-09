@@ -3,12 +3,12 @@ using System.Diagnostics;
 
 namespace AdventOfCode.Day4
 {
-    public static class Day4
+    public class Day4
     {
         public const int Min = 124075;
         public const int Max = 580769;
 
-        public static int Part1()
+        public int Part1()
         {
             bool Checker(int password) =>
                 Day4.IsSixDigit(password)
@@ -18,7 +18,7 @@ namespace AdventOfCode.Day4
             return CheckPasswordRange(Checker);
         }
 
-        public static int Part2()
+        public int Part2()
         {
             bool Checker(int password) =>
                 Day4.IsSixDigit(password)

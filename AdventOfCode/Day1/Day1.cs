@@ -3,9 +3,9 @@ using System.IO;
 
 namespace AdventOfCode.Day1
 {
-    public static class Day1
+    public  class Day1
     {
-        public static int Execute()
+        public int Execute()
         {
             string line;
 
