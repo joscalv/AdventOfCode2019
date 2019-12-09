@@ -31,33 +31,32 @@ namespace AdventOfCode.IntCode
 
     public class IntCodeComputer
     {
-        private readonly long[] _program;
         private readonly IConsoleInput _input;
         private readonly IConsoleOutput _output;
-        private readonly IMemoryController _memoryController;
 
-        public IntCodeComputer(long[] program, IConsoleInput input = null, IConsoleOutput output = null)
+        public IntCodeComputer(IConsoleInput input = null, IConsoleOutput output = null)
         {
-            _program = (long[])program.Clone();
             _input = input ?? new ConsoleInput();
             _output = output ?? new ConsoleOutput();
-            _memoryController = new MemoryController(_program);
+
         }
 
-        public long[] Execute()
+        public long[] Execute(long[] input)
         {
+            var program= (long[])input.Clone();
+            var memoryController = new MemoryController(program);
             long pc = 0;
-            while (pc < _program.Length)
+            while (pc < program.Length)
             {
-                long instructionCode = _program[pc];
-                var instruction = InstructionUtils.GetInstruction(_program, pc, _input, _output, _memoryController);
+                long instructionCode = program[pc];
+                var instruction = InstructionUtils.GetInstruction(program, pc, _input, _output, memoryController);
                 if (instruction == null)
                 {
-                    return _program;
+                    return program;
                 }
-                instruction.Execute(_program, ref pc);
+                instruction.Execute(program, ref pc);
             }
-            return _program;
+            return program;
         }
 
 

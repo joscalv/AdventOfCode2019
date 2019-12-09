@@ -23,9 +23,9 @@ namespace AdventOfCode.Day2
             program[1] = 12;
             program[2] = 2;
 
-            var computer = new IntCodeComputer(program);
+            var computer = new IntCodeComputer();
 
-            var program2 = computer.Execute();
+            var program2 = computer.Execute(program);
             return program2[0];
         }
 
@@ -40,9 +40,9 @@ namespace AdventOfCode.Day2
                     program[1] = noun;
                     program[2] = verb;
 
-                    var computer = new IntCodeComputer(program);
+                    var computer = new IntCodeComputer();
 
-                    var program2 = computer.Execute();
+                    var program2 = computer.Execute(program);
                     if (program2[0] == 19690720)
                     {
                         return 100 * noun + verb;

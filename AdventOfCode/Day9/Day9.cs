@@ -16,8 +16,8 @@ namespace AdventOfCode.Day9
         public static long Part1()
         {
             var outputConsole = new OutputFixed();
-            var computer = new IntCodeComputer(Program, new InputFixedValue(1), outputConsole);
-            var result = computer.Execute();
+            var computer = new IntCodeComputer(new InputFixedValue(1), outputConsole);
+            var result = computer.Execute(Program);
 
             return outputConsole.GetOutPut();
         }
@@ -25,8 +25,8 @@ namespace AdventOfCode.Day9
         public static long Part2()
         {
             var outputConsole = new OutputFixed();
-            var computer = new IntCodeComputer(Program, new InputFixedValue(2), outputConsole);
-            var result = computer.Execute();
+            var computer = new IntCodeComputer(new InputFixedValue(2), outputConsole);
+            var result = computer.Execute(Program);
 
             return outputConsole.GetOutPut();
         }

@@ -1,6 +1,7 @@
 ﻿using AdventOfCode.Day9;
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
+
 using Xunit;
 
 namespace AdventOfCode2019Test
@@ -26,8 +27,8 @@ namespace AdventOfCode2019Test
         {
             long[] input = { 109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99 };
 
-            var computer = new IntCodeComputer(input, new InputFixedValue(0), new ConsoleOutput());
-            var outPut = computer.Execute();
+            var computer = new IntCodeComputer(new InputFixedValue(0), new ConsoleOutput());
+            var outPut = computer.Execute(input);
 
             Assert.Equal(input, outPut);
 
@@ -38,8 +39,8 @@ namespace AdventOfCode2019Test
         {
             long[] input = { 1102, 34915192, 34915192, 7, 4, 7, 99, 0 };
             var outputConsole = new OutputFixed();
-            var computer = new IntCodeComputer(input, new InputFixedValue(0), outputConsole);
-            var result = computer.Execute();
+            var computer = new IntCodeComputer(new InputFixedValue(0), outputConsole);
+            var result = computer.Execute(input);
 
             var outputValue = outputConsole.GetOutPut();
             Assert.Equal(16, outputValue.ToString().Length);
@@ -51,8 +52,8 @@ namespace AdventOfCode2019Test
         {
             long[] input = { 104, 1125899906842624, 99 };
             var outputConsole = new OutputFixed();
-            var computer = new IntCodeComputer(input, new InputFixedValue(0), outputConsole);
-            var result = computer.Execute();
+            var computer = new IntCodeComputer(new InputFixedValue(0), outputConsole);
+            var result = computer.Execute(input);
 
             var outputValue = outputConsole.GetOutPut();
             Assert.Equal(1125899906842624, outputValue);

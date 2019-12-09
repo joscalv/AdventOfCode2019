@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,8 +56,8 @@ namespace AdventOfCode.Day7
         {
             var inputConsole = new InputFixedList(setting, previousOutput);
             var outputConsole = new OutputFixed();
-            IntCodeComputer computer = new IntCodeComputer(program, inputConsole, outputConsole);
-            computer.Execute();
+            IntCodeComputer computer = new IntCodeComputer(inputConsole, outputConsole);
+            computer.Execute(program);
             return outputConsole.GetOutPut();
         }
     }
@@ -88,17 +86,17 @@ namespace AdventOfCode.Day7
             var c4 = new InputOutputLinked(combination.D);
             var c5 = new InputOutputLinked(combination.E);
 
-            var computer1 = new IntCodeComputer(program, c1, c2);
-            var computer2 = new IntCodeComputer(program, c2, c3);
-            var computer3 = new IntCodeComputer(program, c3, c4);
-            var computer4 = new IntCodeComputer(program, c4, c5);
-            var computer5 = new IntCodeComputer(program, c5, c1);
+            var computer1 = new IntCodeComputer(c1, c2);
+            var computer2 = new IntCodeComputer(c2, c3);
+            var computer3 = new IntCodeComputer(c3, c4);
+            var computer4 = new IntCodeComputer(c4, c5);
+            var computer5 = new IntCodeComputer(c5, c1);
 
-            var t1 = Task.Run(() => computer1.Execute());
-            var t2 = Task.Run(() => computer2.Execute());
-            var t3 = Task.Run(() => computer3.Execute());
-            var t4 = Task.Run(() => computer4.Execute());
-            var t5 = Task.Run(() => computer5.Execute());
+            var t1 = Task.Run(() => computer1.Execute(program));
+            var t2 = Task.Run(() => computer2.Execute(program));
+            var t3 = Task.Run(() => computer3.Execute(program));
+            var t4 = Task.Run(() => computer4.Execute(program));
+            var t5 = Task.Run(() => computer5.Execute(program));
 
             await Task.WhenAll(t1, t2, t3, t4, t5);
 

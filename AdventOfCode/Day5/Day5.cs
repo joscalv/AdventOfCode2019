@@ -27,9 +27,9 @@ namespace AdventOfCode.Day5
 
             var input = new InputFixedValue(inputValue);
             var output = new OutputFixed();
-            var computer = new IntCodeComputer(Program, input, output);
+            var computer = new IntCodeComputer(input, output);
 
-            computer.Execute();
+            computer.Execute(Program);
 
             return output.GetOutPut();
         }
