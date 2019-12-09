@@ -3,18 +3,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AdventOfCode.Day8
+namespace AdventOfCode
 {
-    public class Day8
+    public class Day08
     {
 
-        private readonly int[] Input = ReadInput().StringToIntArray();
+        private readonly int[] _input = ReadInput().StringToIntArray();
         public static int Width = 25;
         public static int Height = 6;
 
        public int Part1ComplexImage()
         {
-            var image = new ComplexImage(Width, Height, Input);
+            var image = new ComplexImage(Width, Height, _input);
 
             int zeros = Int32.MaxValue;
             int unoes = 0;
@@ -22,12 +22,12 @@ namespace AdventOfCode.Day8
             var tmp = 0;
             for (int i = 0; i < image.Data.Length; i++)
             {
-                tmp = Utils.NumberOf(image.Data[i], 0);
+                tmp = UtilsDay8.NumberOf(image.Data[i], 0);
                 if (tmp < zeros)
                 {
                     zeros = tmp;
-                    unoes = Utils.NumberOf(image.Data[i], 1);
-                    two = Utils.NumberOf(image.Data[i], 2);
+                    unoes = UtilsDay8.NumberOf(image.Data[i], 1);
+                    two = UtilsDay8.NumberOf(image.Data[i], 2);
                 }
             }
 
@@ -61,13 +61,13 @@ namespace AdventOfCode.Day8
 
         public int Part1SimpleImage()
         {
-            var image = new Image(Input, Width, Height);
+            var image = new Image(_input, Width, Height);
             return image.GetNumberOf1Mult2WhenOfLayerWhenZeroIsMinimal();
         }
 
         public string Part2SimpleImage()
         {
-            var image = new Image(Input, Width, Height);
+            var image = new Image(_input, Width, Height);
 
             var decodedImage = image.DecodeImage();
 
@@ -76,13 +76,13 @@ namespace AdventOfCode.Day8
 
         public static string ReadInput()
         {
-            return File.ReadAllText(@"Inputs\inputDay8.txt");
+            return File.ReadAllText(@"Inputs\inputDay08.txt");
         }
 
       
     }
 
-    public static class Utils
+    public static class UtilsDay8
     {
         public static int[] StringToIntArray(this string s)
         {
@@ -159,7 +159,7 @@ namespace AdventOfCode.Day8
     }
 
 
-    [ObsoleteAttribute]
+    [Obsolete]
     public class ComplexImage
     {
         public ComplexImage(int width, int height, int[] data)

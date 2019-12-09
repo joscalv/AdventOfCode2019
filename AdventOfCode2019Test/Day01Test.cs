@@ -3,7 +3,7 @@ using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day1Test
+    public class Day01Test
     {
         [Theory]
         [InlineData(14, 2)]

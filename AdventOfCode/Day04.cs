@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 
-namespace AdventOfCode.Day4
+namespace AdventOfCode
 {
-    public class Day4
+    public class Day04
     {
         public const int Min = 124075;
         public const int Max = 580769;
@@ -11,9 +10,9 @@ namespace AdventOfCode.Day4
         public int Part1()
         {
             bool Checker(int password) =>
-                Day4.IsSixDigit(password)
-                && Day4.HasTwoAdjacentEqual(password)
-                && Day4.NotDecrease(password);
+                Day04.IsSixDigit(password)
+                && Day04.HasTwoAdjacentEqual(password)
+                && Day04.NotDecrease(password);
 
             return CheckPasswordRange(Checker);
         }
@@ -21,9 +20,9 @@ namespace AdventOfCode.Day4
         public int Part2()
         {
             bool Checker(int password) =>
-                Day4.IsSixDigit(password)
-                && Day4.HasOnlyTwoAdjacentEqual(password)
-                && Day4.NotDecrease(password);
+                Day04.IsSixDigit(password)
+                && Day04.HasOnlyTwoAdjacentEqual(password)
+                && Day04.NotDecrease(password);
 
             return CheckPasswordRange(Checker);
         }

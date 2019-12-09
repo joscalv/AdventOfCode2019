@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Day9;
+﻿using AdventOfCode;
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
@@ -6,9 +6,9 @@ using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day9Test
+    public class Day09Test
     {
-        private readonly Day9 _day9= new Day9();
+        private readonly Day09 _day9 = new Day09();
         [Fact]
         public void TestResultPart1()
         {

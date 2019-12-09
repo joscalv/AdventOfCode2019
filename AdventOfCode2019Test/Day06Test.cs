@@ -1,11 +1,12 @@
+using AdventOfCode;
 using AdventOfCode.Day6;
 using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day6Test
+    public class Day06Test
     {
-        private readonly Day6 _day6 = new Day6();
+        private readonly Day06 _day6 = new Day06();
 
         [Fact]
         public void Part1()
@@ -20,7 +21,7 @@ namespace AdventOfCode2019Test
         public void Part1Sample()
         {
             var expected = 42;
-            var orbits = Day6.ReadInput(@"Inputs\inputDay6Test1.txt");
+            var orbits = Day06.ReadInput(@"Inputs\inputDay06Test1.txt");
             var orbitAnalyzer = new OrbitAnalyzer(orbits);
             var value = orbitAnalyzer.GetNumberOfOrbits();
             Assert.Equal(expected, value);
@@ -39,7 +40,7 @@ namespace AdventOfCode2019Test
         public void Part2Sample()
         {
             var expected = 4;
-            var orbits = Day6.ReadInput(@"Inputs\inputDay6Test2.txt");
+            var orbits = Day06.ReadInput(@"Inputs\inputDay06Test2.txt");
             var orbitAnalyzer = new OrbitAnalyzer(orbits);
             var value = orbitAnalyzer.GetOrbitalTransfers("YOU", "SAN");
             Assert.Equal(expected, value);

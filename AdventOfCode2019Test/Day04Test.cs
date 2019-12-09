@@ -1,12 +1,11 @@
 using AdventOfCode;
-using AdventOfCode.Day4;
 using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day4Test
+    public class Day04Test
     {
-        private readonly Day4 _day4 = new Day4();
+        private readonly Day04 _day4 = new Day04();
         
         [Fact]
         public void Part1Test()

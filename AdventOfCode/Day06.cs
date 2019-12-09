@@ -1,25 +1,24 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
+using AdventOfCode.Day6;
 
-namespace AdventOfCode.Day6
+namespace AdventOfCode
 {
-    public class Day6
+    public class Day06
     {
 
-        private readonly (string center, string satellite)[] Orbits = ReadInput();
+        private readonly (string center, string satellite)[] _orbits = ReadInput();
 
         public int Part1()
         {
-            var orbitAnalyzer = new OrbitAnalyzer(Orbits);
+            var orbitAnalyzer = new OrbitAnalyzer(_orbits);
             var value = orbitAnalyzer.GetNumberOfOrbits();
             return value;
         }
 
         public int Part2()
         {
-            var orbitAnalyzer = new OrbitAnalyzer(Orbits);
+            var orbitAnalyzer = new OrbitAnalyzer(_orbits);
             var value = orbitAnalyzer.GetOrbitalTransfers("YOU", "SAN");
             return value;
         }
@@ -27,7 +26,7 @@ namespace AdventOfCode.Day6
 
         public static (string center, string satellite)[] ReadInput()
         {
-            return ReadInput(@"Inputs\inputDay6.txt");
+            return ReadInput(@"Inputs\inputDay06.txt");
         }
 
         public static (string center, string satellite)[] ReadInput(string path)

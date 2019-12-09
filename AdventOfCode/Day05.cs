@@ -1,14 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
-namespace AdventOfCode.Day5
+namespace AdventOfCode
 {
 
-    public class Day5
+    public class Day05
     {
         private readonly long[] _program = ReadInput();
         public long Part1()
@@ -36,7 +34,7 @@ namespace AdventOfCode.Day5
 
         private static long[] ReadInput()
         {
-            var program = File.ReadAllText(@"Inputs\inputDay5.txt")
+            var program = File.ReadAllText(@"Inputs\inputDay05.txt")
                 .Split(',')
                 .Select(long.Parse)
                 .ToArray();

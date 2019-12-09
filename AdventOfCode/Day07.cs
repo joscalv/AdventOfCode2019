@@ -2,17 +2,16 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
-namespace AdventOfCode.Day7
+namespace AdventOfCode
 {
-    public class Day7
+    public class Day07
     {
         private readonly long[] _program = ReadInput();
 
-      public long Part1()
+        public long Part1()
         {
             return Day7Part1.AmplificationCircuit(_program);
         }
@@ -25,7 +24,7 @@ namespace AdventOfCode.Day7
         private static long[] ReadInput()
         {
             var program = File
-                .ReadAllText(@"Inputs\inputDay7.txt")
+                .ReadAllText(@"Inputs\inputDay07.txt")
                 .Split(',')
                 .Select(long.Parse).ToArray();
             return program;
@@ -36,7 +35,7 @@ namespace AdventOfCode.Day7
     {
         public static long AmplificationCircuit(long[] program)
         {
-            var combinations = Utils.GetCombinations(0, 4);
+            var combinations = UtilsDay7.GetCombinations(0, 4);
             long outputE = 0;
             foreach (var c in combinations)
             {
@@ -65,7 +64,7 @@ namespace AdventOfCode.Day7
     {
         public static async Task<long> AmplificationCircuitWithFeedbackLoop(long[] program)
         {
-            var combinations = Utils.GetCombinations(5, 9);
+            var combinations = UtilsDay7.GetCombinations(5, 9);
             long result = 0;
             foreach (var combination in combinations)
             {
@@ -104,7 +103,7 @@ namespace AdventOfCode.Day7
     }
 
 
-    public static class Utils
+    public static class UtilsDay7
     {
         public static List<(int A, int B, int C, int D, int E)> GetCombinations(int min, int max)
         {

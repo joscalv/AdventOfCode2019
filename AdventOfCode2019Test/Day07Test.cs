@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using AdventOfCode.Day7;
+using AdventOfCode;
 using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day7Test
+    public class Day07Test
     {
-        private readonly Day7 _day7= new Day7();
+        private readonly Day07 _day7= new Day07();
         [Fact]
         public void Part1()
         {

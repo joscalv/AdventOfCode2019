@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using AdventOfCode.Day1;
 
-namespace AdventOfCode.Day1
+namespace AdventOfCode
 {
-    public  class Day1
+    public  class Day01
     {
         public int Execute()
         {
@@ -11,7 +11,7 @@ namespace AdventOfCode.Day1
 
             var fuel = 0;
 
-            var file = new StreamReader(@"inputs\inputDay1.txt");
+            var file = new StreamReader(@"inputs\inputDay01.txt");
             while ((line = file.ReadLine()) != null)
             {
                 if (int.TryParse(line.Trim(), out var weight))

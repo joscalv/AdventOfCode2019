@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.ExceptionServices;
 
-namespace AdventOfCode.Day3
+namespace AdventOfCode
 {
-    public class Day3
+    public class Day03
     {
-        private readonly List<string> MovesLine1;
-        private readonly List<string> MovesLine2;
+        private readonly List<string> _movesLine1;
+        private readonly List<string> _movesLine2;
 
-        public Day3()
+        public Day03()
         {
-            ReadInput(out MovesLine1, out MovesLine2);
+            ReadInput(out _movesLine1, out _movesLine2);
         }
 
         public static void ReadInput(out List<string> movesLine1, out List<string> movesLine2)
         {
-            var input = System.IO.File.ReadAllText(@"Inputs\inputDay3.txt");
+            var input = System.IO.File.ReadAllText(@"Inputs\inputDay03.txt");
             movesLine1 = input.Split("\n")[0].Split(',').ToList();
             movesLine2 = input.Split("\n")[1].Split(',').ToList();
         }
@@ -27,8 +25,8 @@ namespace AdventOfCode.Day3
         {
 
             var minDistanceSolution1 = GetDistanceToClosestIntersectionUsingSegments(
-                MovesLine1,
-                MovesLine2,
+                _movesLine1,
+                _movesLine2,
                 out int minDistance11,
                 out Point nearestPoint11,
                 out List<Point> joinList11);
@@ -38,8 +36,8 @@ namespace AdventOfCode.Day3
         public int Part1_Version2()
         {
             var minDistanceSolution2 = GetDistanceToClosestIntersectionUsingAllPoints(
-                MovesLine1,
-                MovesLine2,
+                _movesLine1,
+                _movesLine2,
                 out int minDistance,
                 out Point nearestJoin,
                 out List<Point> joinList,
@@ -61,7 +59,7 @@ namespace AdventOfCode.Day3
                 out var positionsLine1,
                 out var positionsLine2);
 
-            var solution2 = Day3.Solution2(nearestJoin, joinList, positionsLine1, positionsLine2);
+            var solution2 = Day03.Solution2(nearestJoin, joinList, positionsLine1, positionsLine2);
 
             return solution2;
         }
@@ -72,8 +70,8 @@ namespace AdventOfCode.Day3
             minDistance = int.MaxValue;
             nearestJoin = Point.Center;
 
-            var segmentsLine1 = Utils.GetSegments(new Point(0, 0), movesLine1);
-            var segmentsLine2 = Utils.GetSegments(new Point(0, 0), movesLine2);
+            var segmentsLine1 = UtilsDay3.GetSegments(new Point(0, 0), movesLine1);
+            var segmentsLine2 = UtilsDay3.GetSegments(new Point(0, 0), movesLine2);
 
             intersectionList = segmentsLine1
                 .SelectMany(l1 => segmentsLine2.Select(l1.GetIntersection))
@@ -100,8 +98,8 @@ namespace AdventOfCode.Day3
             minDistance = int.MaxValue;
             nearestJoin = Point.Center;
 
-            positionsLine1 = Utils.GetPath(origin, commands1);
-            positionsLine2 = Utils.GetPath(origin, commands2);
+            positionsLine1 = UtilsDay3.GetPath(origin, commands1);
+            positionsLine2 = UtilsDay3.GetPath(origin, commands2);
 
             var d2 = positionsLine2.ToHashSet();
 
@@ -166,7 +164,7 @@ namespace AdventOfCode.Day3
 
     }
 
-    public static class Utils
+    public static class UtilsDay3
     {
         public static List<Point> GetJoins(List<Point> positionsLine1, List<Point> positionsLine2)
         {

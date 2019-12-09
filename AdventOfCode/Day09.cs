@@ -3,9 +3,9 @@ using System.Linq;
 using AdventOfCode.IntCode;
 using AdventOfCode.IntCode.IO;
 
-namespace AdventOfCode.Day9
+namespace AdventOfCode
 {
-    public class Day9
+    public class Day09
     {
         private readonly long[] _program = ReadInput();
 
@@ -30,7 +30,7 @@ namespace AdventOfCode.Day9
         private static long[] ReadInput()
         {
             var program = File
-                .ReadAllText(@"Inputs\inputDay9.txt")
+                .ReadAllText(@"Inputs\inputDay09.txt")
                 .Split(',')
                 .Select(long.Parse).ToArray();
             return program;

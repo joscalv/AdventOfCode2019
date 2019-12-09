@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using AdventOfCode.Day8;
+using AdventOfCode;
 using Xunit;
 
 namespace AdventOfCode2019Test
 {
-    public class Day8Test
+    public class Day08Test
     {
 
-        private readonly Day8 _day8= new Day8();
+        private readonly Day08 _day8= new Day08();
 
         private string expectedResult2 =
             $"#    #  #  ##  ###  #  # \r\n" +
@@ -60,7 +60,7 @@ namespace AdventOfCode2019Test
         public void DecodeTest()
         {
             string image = "123456789012";
-            var data = AdventOfCode.Day8.Utils.StringToIntArray(image);
+            var data = UtilsDay8.StringToIntArray(image);
             var img = new ComplexImage(3, 2, data);
             Assert.Equal(new int[] { 1, 2, 3 }, img.Data[0][0]);
             Assert.Equal(new int[] { 4, 5, 6 }, img.Data[0][1]);
@@ -74,7 +74,7 @@ namespace AdventOfCode2019Test
             string image = "123456789012";
             int[] expected = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 };
 
-            var result = AdventOfCode.Day8.Utils.StringToIntArray(image);
+            var result = UtilsDay8.StringToIntArray(image);
             Assert.Equal(expected, result);
 
         }

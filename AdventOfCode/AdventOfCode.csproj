@@ -5,28 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Inputs\inputDay3.txt">
+    <None Update="Inputs\inputDay03.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay2.txt">
+    <None Update="Inputs\inputDay02.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay1.txt">
+    <None Update="Inputs\inputDay01.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay5.txt">
+    <None Update="Inputs\inputDay05.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay6.txt">
+    <None Update="Inputs\inputDay06.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay7.txt">
+    <None Update="Inputs\inputDay07.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay8.txt">
+    <None Update="Inputs\inputDay08.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\inputDay9.txt">
+    <None Update="Inputs\inputDay10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Inputs\inputDay09.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
