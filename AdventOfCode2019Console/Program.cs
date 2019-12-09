@@ -19,44 +19,44 @@ namespace AdventOfCode2019Console
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("AdventOfCode2019");
-            Console.WriteLine($"{Environment.NewLine}Day 1");
+            Console.WriteLine("*** AdventOfCode2019 ***");
+            Console.WriteLine($"{Environment.NewLine}--- Day 1: The Tyranny of the Rocket Equation ---");
             ExecuteSolution("2.2 ", Day1.Execute);
 
-            Console.WriteLine($"{Environment.NewLine}Day 2");
+            Console.WriteLine($"{Environment.NewLine}--- Day 2: 1202 Program Alarm ---");
             ExecuteSolution("2.1 ", Day2.Part1);
             ExecuteSolution("2.2 ", Day2.Part2);
 
-            Console.WriteLine($"{Environment.NewLine}Day 3");
+            Console.WriteLine($"{Environment.NewLine}--- Day 3: Crossed Wires ---");
             Day3.Init();
             ExecuteSolution("3.1.A Minimun distance (using segments): ", Day3.Part1_Version1);
             ExecuteSolution("3.1.B Minimun distance (using all points): ", Day3.Part1_Version2);
             ExecuteSolution("3.2 Sunny with a Chance of Asteroids. Thermal Radiators:", Day3.Part2);
 
-            Console.WriteLine($"{Environment.NewLine}Day 4");
+            Console.WriteLine($"{Environment.NewLine}--- Day 4: Secure Container ---");
             ExecuteSolution("4.1. Sunny with a Chance of Asteroids: ", Day4.Part1);
             ExecuteSolution("4.2 Sunny with a Chance of Asteroids. Thermal Radiators:", Day4.Part2);
 
 
-            Console.WriteLine($"{Environment.NewLine}Day 5");
+            Console.WriteLine($"{Environment.NewLine}--- Day 5: Sunny with a Chance of Asteroids ---");
             Day5.Init();
             ExecuteSolution("5.1. Sunny with a Chance of Asteroids: ", Day5.Part1);
             ExecuteSolution("5.2. Sunny with a Chance of Asteroids. Thermal Radiators:", Day5.Part2);
 
 
-            Console.WriteLine($"{Environment.NewLine}Day 6");
+            Console.WriteLine($"{Environment.NewLine}--- Day 6: Universal Orbit Map ---");
             Day6.Init();
             ExecuteSolution("6.1 The number of orbits is ", Day6.Part1);
             ExecuteSolution("6.2 Steps to get SANTA", Day6.Part2);
 
 
-            Console.WriteLine($"{Environment.NewLine}Day 7");
+            Console.WriteLine($"{Environment.NewLine}--- Day 7: Amplification Circuit ---");
             Day7.Init();
             ExecuteSolution("7.1 Amplification Circuit", Day7.Part1);
             ExecuteSolution("7.2 Amplification Circuit with Feedback loop", () => Day7.Part2().Result);
 
 
-            Console.WriteLine($"{Environment.NewLine}Day 8");
+            Console.WriteLine($"{Environment.NewLine}--- Day 8: Space Image Format ---");
             Day8.Init();
             ExecuteSolution("8.1 Count Zeros Complex", Day8.Part1ComplexImage);
             ExecuteSolution("8.1 Count Zeros Simple", Day8.Part1SimpleImage);
