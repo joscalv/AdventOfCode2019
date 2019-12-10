@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AdventOfCode.Model;
 
 namespace AdventOfCode
 {
@@ -70,8 +71,8 @@ namespace AdventOfCode
             minDistance = int.MaxValue;
             nearestJoin = Point.Center;
 
-            var segmentsLine1 = UtilsDay3.GetSegments(new Point(0, 0), movesLine1);
-            var segmentsLine2 = UtilsDay3.GetSegments(new Point(0, 0), movesLine2);
+            var segmentsLine1 = Day3Utils.GetSegments(new Point(0, 0), movesLine1);
+            var segmentsLine2 = Day3Utils.GetSegments(new Point(0, 0), movesLine2);
 
             intersectionList = segmentsLine1
                 .SelectMany(l1 => segmentsLine2.Select(l1.GetIntersection))
@@ -98,8 +99,8 @@ namespace AdventOfCode
             minDistance = int.MaxValue;
             nearestJoin = Point.Center;
 
-            positionsLine1 = UtilsDay3.GetPath(origin, commands1);
-            positionsLine2 = UtilsDay3.GetPath(origin, commands2);
+            positionsLine1 = Day3Utils.GetPath(origin, commands1);
+            positionsLine2 = Day3Utils.GetPath(origin, commands2);
 
             var d2 = positionsLine2.ToHashSet();
 
@@ -164,7 +165,7 @@ namespace AdventOfCode
 
     }
 
-    public static class UtilsDay3
+    public static class Day3Utils
     {
         public static List<Point> GetJoins(List<Point> positionsLine1, List<Point> positionsLine2)
         {
@@ -243,91 +244,4 @@ namespace AdventOfCode
             return result;
         }
     }
-
-    public class Line
-    {
-        public Line(Point point0, Point point1)
-        {
-            Point0 = point0;
-            Point1 = point1;
-        }
-
-        public Point Point0 { get; }
-        public Point Point1 { get; }
-
-        public Point GetIntersection(Line other)
-        {
-            int a1 = Point1.Y - Point0.Y;
-            int b1 = Point0.X - Point1.X;
-            int c1 = a1 * Point0.X + b1 * Point0.Y;
-
-            int a2 = other.Point1.Y - other.Point0.Y;
-            int b2 = other.Point0.X - other.Point1.X;
-            int c2 = a2 * other.Point0.X + b2 * other.Point0.Y;
-
-            int delta = a1 * b2 - a2 * b1;
-            //If lines are parallel, the result will be (NaN, NaN).
-            var intersection = delta == 0 ? new Point(0, 0)
-                : new Point((b2 * c1 - b1 * c2) / delta, (a1 * c2 - a2 * c1) / delta);
-
-            if (intersection.X != 0 && intersection.Y != 0 && IsInsideLine(intersection.X, intersection.Y) &&
-                other.IsInsideLine(intersection.X, intersection.Y))
-            {
-                return intersection;
-            }
-            else
-            {
-                return new Point(0, 0);
-            }
-
-        }
-
-        private bool IsInsideLine(double x, double y)
-        {
-            return (x >= Point0.X && x <= Point1.X
-                    || x >= Point1.X && x <= Point0.X)
-                   && (y >= Point0.Y && y <= Point1.Y
-                       || y >= Point1.Y && y <= Point0.Y);
-        }
-    }
-
-    public struct Point
-    {
-        public Point(int x, int y) : this()
-        {
-            X = x;
-            Y = y;
-        }
-
-        public int X { get; }
-
-        public int Y { get; }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Point))
-            {
-                return false;
-            }
-
-            return Equals((Point)obj);
-        }
-
-        public bool Equals(Point other)
-        {
-            return X == other.X && Y == other.Y;
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (X * 397) ^ Y;
-            }
-        }
-
-
-        public static Point Center => new Point(0, 0);
-    }
-
 }

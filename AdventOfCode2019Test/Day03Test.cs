@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AdventOfCode;
+using AdventOfCode.Model;
 using Xunit;
 
 namespace AdventOfCode2019Test
@@ -43,7 +44,7 @@ namespace AdventOfCode2019Test
             var origin = new Point(x, y);
             var expectedResult = new Point(expectedX, expectedY);
 
-            var result = UtilsDay3.Move(origin, movement);
+            var result = Day3Utils.Move(origin, movement);
 
             //Assert.Equal(expectedResult, result);
         }
@@ -56,7 +57,7 @@ namespace AdventOfCode2019Test
             var movements = new List<string> { "R1", "R1", "R1", "R1" };
             var expected = new Point[] { new Point(1, 0), new Point(2, 0), new Point(3, 0), new Point(4, 0) };
 
-            var result = UtilsDay3.GetPath(oirgin, movements);
+            var result = Day3Utils.GetPath(oirgin, movements);
 
             Assert.Equal(expected, result);
         }

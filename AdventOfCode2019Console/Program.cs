@@ -30,8 +30,8 @@ namespace AdventOfCode2019Console
 
             Console.WriteLine($"{Environment.NewLine}--- Day 4: Secure Container ---");
             var day4= new Day04();
-            ExecuteSolution("4.1 Sunny with a Chance of Asteroids ", day4.Part1);
-            ExecuteSolution("4.2 Sunny with a Chance of Asteroids. Thermal Radiators", day4.Part2);
+            ExecuteSolution("4.1 Check passwords Part 1", day4.Part1);
+            ExecuteSolution("4.2 Check passwords Part 2", day4.Part2);
 
 
             Console.WriteLine($"{Environment.NewLine}--- Day 5: Sunny with a Chance of Asteroids ---");
@@ -63,6 +63,11 @@ namespace AdventOfCode2019Console
             var day9 = new Day09();
             ExecuteSolution("9.1 BOOST keycode", day9.Part1);
             ExecuteSolution("9.2 Coordinates of the distress signal", day9.Part2);
+
+            Console.WriteLine($"{Environment.NewLine}--- Day 10: Monitoring Station ---");
+            var day10 = new Day10();
+            ExecuteSolution("10.1 Max number of visible asteroids", day10.Part1);
+            ExecuteSolution("10.2 Destroy asteroids in order (angle, distance)", day10.Part2);
         }
 
         private static void ExecuteSolution(string title, Func<long> solution)
