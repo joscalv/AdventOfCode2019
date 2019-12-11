@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AdventOfCode;
-using AdventOfCode.Model;
+﻿using AdventOfCode;
 using Xunit;
 
 namespace AdventOfCode2019Test
@@ -23,6 +20,7 @@ namespace AdventOfCode2019Test
             long day11Part1Solution = -1;
             Assert.Equal(day11Part1Solution, _day11.Part2());
         }
+      
     }
 }
 
