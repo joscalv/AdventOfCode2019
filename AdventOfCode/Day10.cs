@@ -1,4 +1,5 @@
-﻿using AdventOfCode.Model;
+﻿using System;
+using AdventOfCode.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -118,7 +119,7 @@ namespace AdventOfCode
         public static Point[] ParseInput(this string input)
         {
             var result = new List<Point>();
-            string[] lines = input.Split('\n', '\r');
+            string[] lines = input.Split(new []{'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
             int maxX = lines?.First()?.Length ?? 0;
 
             for (int y = 0; y < lines?.Length; y++)
