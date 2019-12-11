@@ -9,6 +9,7 @@ namespace AdventOfCode2019Test
     public class Day10Test
     {
         private readonly Day10 _day10 = new Day10();
+
         [Fact]
         public void TestResultPart1()
         {

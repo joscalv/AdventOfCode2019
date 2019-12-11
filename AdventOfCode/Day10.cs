@@ -1,9 +1,7 @@
-﻿using System;
+﻿using AdventOfCode.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using AdventOfCode.Model;
 
 namespace AdventOfCode
 {
@@ -16,11 +14,10 @@ namespace AdventOfCode
             return GetNumberOfVisibleAsteroids(_program, out _);
         }
 
-        public static int GetNumberOfVisibleAsteroids(Point[] asteroids, out Point mostVisibleAsteroid)
+        public static int GetNumberOfVisibleAsteroidsOld(Point[] asteroids, out Point mostVisibleAsteroid)
         {
             Dictionary<Point, int> dPoints = asteroids.ToDictionary(p => p, p => 0);
             int maxValue = 0;
-            HashSet<Line> processed = new HashSet<Line>();
 
             foreach (Point asteroid in asteroids)
             {
@@ -36,7 +33,7 @@ namespace AdventOfCode
                     .Where(line => line.GetCandidateObstacles(asteroids).Count(line.IsInsideLine) == 0)
                     .Select(line => line.Point1).ToList();
 
-             var tmp = withoutObstacles.Count();
+                var tmp = withoutObstacles.Count();
                 if (tmp > maxValue)
                 {
                     maxValue = tmp;
@@ -48,6 +45,26 @@ namespace AdventOfCode
 
             mostVisibleAsteroid = dPoints.OrderByDescending(kvp => kvp.Value).First().Key;
             return dPoints.Values.Max();
+        }
+
+        public static int GetNumberOfVisibleAsteroids(Point[] asteroids, out Point mostVisibleAsteroid)
+        {
+            int max = 0;
+            mostVisibleAsteroid = default(Point);
+
+            foreach (var asteroid in asteroids)
+            {
+                var test = asteroids.Except(new[] { asteroid }).GroupBy(other => asteroid.GetAngle(other));
+
+                var numberOfVisible = test.Count();
+                if (numberOfVisible > max)
+                {
+                    mostVisibleAsteroid = asteroid;
+                    max = numberOfVisible;
+                }
+            }
+
+            return max;
         }
 
 
