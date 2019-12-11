@@ -12,6 +12,7 @@ namespace AdventOfCode2019Console
     {
         static async Task Main(string[] args)
         {
+
             Console.WriteLine("*** AdventOfCode2019 ***");
             Console.WriteLine($"{Environment.NewLine}--- Day 1: The Tyranny of the Rocket Equation ---");
             var day1 = new Day01();
@@ -29,7 +30,7 @@ namespace AdventOfCode2019Console
             ExecuteSolution("3.2   Sunny with a Chance of Asteroids. Thermal Radiators", day3.Part2);
 
             Console.WriteLine($"{Environment.NewLine}--- Day 4: Secure Container ---");
-            var day4= new Day04();
+            var day4 = new Day04();
             ExecuteSolution("4.1 Check passwords Part 1", day4.Part1);
             ExecuteSolution("4.2 Check passwords Part 2", day4.Part2);
 
@@ -68,6 +69,12 @@ namespace AdventOfCode2019Console
             var day10 = new Day10();
             ExecuteSolution("10.1 Max number of visible asteroids", day10.Part1);
             ExecuteSolution("10.2 Destroy asteroids in order (angle, distance)", day10.Part2);
+
+
+            Console.WriteLine($"{Environment.NewLine}--- Day 11: Space Police ---");
+            var day11 = new Day11();
+            ExecuteSolution("11.1 Number of panels painted", day11.Part1);
+            ExecuteSolution("12.1 Message", day11.Part2);
         }
 
         private static void ExecuteSolution(string title, Func<long> solution)
