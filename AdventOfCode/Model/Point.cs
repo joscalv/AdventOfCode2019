@@ -18,7 +18,7 @@ namespace AdventOfCode.Model
         {
             double xDelta = another.X - X;
             double yDelta = another.Y - Y;
-            return ((Math.Atan2(xDelta, yDelta) * (180 / Math.PI) +360) %360  ) ;
+            return ((Math.Atan2(xDelta, yDelta) * (180 / Math.PI) + 360) % 360);
         }
 
         public double GetDistance(Point another)
@@ -55,11 +55,14 @@ namespace AdventOfCode.Model
         {
             return p1.Equals(p2);
         }
+
         public static bool operator !=(Point p1, Point p2)
         {
             return !p1.Equals(p2);
         }
 
         public static Point Center => new Point(0, 0);
+
+        public static Point Create(int x, int y) => new Point(x, y);
     }
 }

@@ -18,8 +18,8 @@ namespace AdventOfCode
         public static void ReadInput(out List<string> movesLine1, out List<string> movesLine2)
         {
             var input = System.IO.File.ReadAllText(@"Inputs\inputDay03.txt");
-            movesLine1 = input.Split("\n")[0].Split(',').ToList();
-            movesLine2 = input.Split("\n")[1].Split(',').ToList();
+            movesLine1 = input.Split('\n')[0].Split(',').ToList();
+            movesLine2 = input.Split('\n')[1].Split(',').ToList();
         }
 
         public int Part1_Version1()
