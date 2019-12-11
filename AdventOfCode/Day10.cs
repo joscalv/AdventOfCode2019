@@ -8,11 +8,11 @@ namespace AdventOfCode
 {
     public class Day10
     {
-        private readonly Point[] _program = Day10Utils.ReadInput();
+        private readonly Point[] _asteroids = Day10Utils.ReadInput();
 
         public long Part1()
         {
-            return GetNumberOfVisibleAsteroids(_program, out _);
+            return GetNumberOfVisibleAsteroids(_asteroids, out _);
         }
 
         public static int GetNumberOfVisibleAsteroidsOld(Point[] asteroids, out Point mostVisibleAsteroid)
@@ -76,7 +76,7 @@ namespace AdventOfCode
             var points = new List<(double angle, double distance, Point asteroid)>();
 
 
-            var orderedAsteroids = _program
+            var orderedAsteroids = _asteroids
                 .Where(p => p != center)
                 .Select(point => (angle: center.GetAngle(point), dist: center.GetDistance(point), asteroid: point))
                 .GroupBy(a => a.angle)
@@ -97,13 +97,6 @@ namespace AdventOfCode
             var asteroidDestroid200 = orderedAsteroids.ElementAt(200).asteroid;
             return asteroidDestroid200.X * 100 + asteroidDestroid200.Y;
         }
-
-
-
-        public int MaxNumberOfSatilleVisible(string input)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
     public static class Day10Utils
@@ -119,7 +112,7 @@ namespace AdventOfCode
         public static Point[] ParseInput(this string input)
         {
             var result = new List<Point>();
-            string[] lines = input.Split(new []{'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = input.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             int maxX = lines?.First()?.Length ?? 0;
 
             for (int y = 0; y < lines?.Length; y++)
