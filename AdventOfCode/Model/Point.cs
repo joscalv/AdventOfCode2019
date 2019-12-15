@@ -61,6 +61,11 @@ namespace AdventOfCode.Model
             return !p1.Equals(p2);
         }
 
+        public override string ToString()
+        {
+            return $"({X},{Y})";
+        }
+
         public static Point Center => new Point(0, 0);
 
         public static Point Create(int x, int y) => new Point(x, y);

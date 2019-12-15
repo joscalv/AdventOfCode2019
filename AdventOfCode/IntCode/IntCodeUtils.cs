@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using AdventOfCode.Model;
 
 namespace AdventOfCode.IntCode
 {
@@ -12,5 +13,7 @@ namespace AdventOfCode.IntCode
                 .Split(',')
                 .Select(long.Parse).ToArray();
         }
+
+       
     }
 }

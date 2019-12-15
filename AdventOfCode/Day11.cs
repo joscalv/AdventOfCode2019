@@ -36,7 +36,7 @@ namespace AdventOfCode
             var maxY = allY.Max();
             var height = (maxY - minY) + 1;
             var result = (new string(' ', width * height)).ToCharArray();
-            var result2 = new char[width , height ];
+            var result2 = new char[width, height];
 
             foreach ((Point point, Color color) paintedPanel in paintedPanels)
             {
@@ -92,7 +92,7 @@ namespace AdventOfCode
         private Direction _direction = Direction.Up;
         private OutputType _currentOutputType = OutputType.ColorPainted;
 
-        public PaintingController(Color firstPanelColor= Color.Black)
+        public PaintingController(Color firstPanelColor = Color.Black)
         {
             _firstPanelColor = firstPanelColor;
         }
@@ -100,7 +100,7 @@ namespace AdventOfCode
         public long Read()
         {
             Color result = Color.Black;
-            
+
             if (_paintedPositions.TryGetValue(_currentPosition, out var color))
             {
                 result = color;
@@ -184,13 +184,11 @@ namespace AdventOfCode
         Down = 2,
         Left = 3
     }
-
     internal enum Turn
     {
         TurnLeft = 0,
         TurnRight = 1
     }
-
     public enum Color
     {
         Black = 0,

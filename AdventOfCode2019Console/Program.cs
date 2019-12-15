@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using AdventOfCode;
-using AdventOfCode.Day1;
 using AdventOfCode.Day6;
 
 namespace AdventOfCode2019Console
@@ -75,6 +74,9 @@ namespace AdventOfCode2019Console
             var day11 = new Day11();
             ExecuteSolution("11.1 Number of panels painted", day11.Part1);
             ExecuteSolution("12.1 Message", day11.Part2);
+
+            //Day13 day13= new Day13();
+            //day13.Part2();
         }
 
         private static void ExecuteSolution(string title, Func<long> solution)

@@ -1,4 +1,4 @@
-using AdventOfCode.Day1;
+using AdventOfCode.Model;
 using Xunit;
 
 namespace AdventOfCode2019Test

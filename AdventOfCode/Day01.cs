@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using AdventOfCode.Day1;
+using AdventOfCode.Model;
 
 namespace AdventOfCode
 {
